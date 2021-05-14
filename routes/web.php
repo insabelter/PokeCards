@@ -14,9 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
-Route::get('main', function () {
-    return view('main');
+Route::get('grading', function () {
+    return view('subpages.grading');
+});
+
+Route::get('trading', function () {
+    return view('subpages.trading');
+});
+
+Route::get('wiki', function () {
+    return view('subpages.wiki');
+});
+
+Route::get('profile', function () {
+    return view('profile');
 });
