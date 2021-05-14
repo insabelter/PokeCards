@@ -1,7 +1,7 @@
 @extends('main')
 
-@section('title', 'Trading')
+@section('title', 'Profile')
 
 @section('content')
-    <h1>Trading</h1>
+    <h1>Profile</h1>
 @endsection

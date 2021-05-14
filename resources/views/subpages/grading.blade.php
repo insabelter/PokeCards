@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Grading</title>
-    </head>
-    <body>
-        <h1>Grading</h1>
-    </body>
+@extends('main')
 
+@section('title', 'Grading')
 
-
-
-
-</html>
+@section('content')
+    <h1>Grading</h1>
+@endsection

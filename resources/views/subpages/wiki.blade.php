@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Wiki</title>
-    </head>
-    <body>
-        <h1>Wiki</h1>
-    </body>
+@extends('main')
 
+@section('title', 'Wiki')
 
-
-
-
-</html>
+@section('content')
+    <h1>Wiki</h1>
+@endsection

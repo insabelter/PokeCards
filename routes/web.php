@@ -30,5 +30,5 @@ Route::get('wiki', function () {
 });
 
 Route::get('profile', function () {
-    return view('profile');
+    return view('subpages.profile');
 });
