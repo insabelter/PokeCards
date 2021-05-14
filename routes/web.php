@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('main');
-});
+})->name('main');
 
 Route::get('grading', function () {
     return view('subpages.grading');
-});
+})->name('grading');
 
 Route::get('trading', function () {
     return view('subpages.trading');
-});
+})->name('trading');
 
 Route::get('wiki', function () {
     return view('subpages.wiki');
-});
+})->name('wiki');
 
 Route::get('profile', function () {
     return view('subpages.profile');
-});
+})->name('profile');
