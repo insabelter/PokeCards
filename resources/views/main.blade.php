@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Pok&eacute;Cards @yield('title')</title>
+        <script src="{{asset('js/app.js')}}" defer></script>
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
         <h1><img src="https://fontmeme.com/permalink/210514/7380c713c6ccc27634273d42b7c170f1.png" alt="pokemon-schriftart" border="0"></h1>
