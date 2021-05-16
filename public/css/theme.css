@@ -1,0 +1,57 @@
+/* -- GENERAL ---------------- */
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.nav-link {
+    color: white !important;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nav-button {
+    margin: 00.5rem;
+}
+
+/* -- PAGE STRUCTUE ---------------- */
+
+body {
+    background-color: var(--primary);
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+main {
+    padding: calc(var(--header-height) + 1rem) 1rem calc(var(--footer-height) + 1rem) 1rem !important;
+    min-height: 100vh;
+
+    background-color: var(--white);
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* -- HEADER AND FOOTER ---------------- */
+
+nav {
+    background-color: var(--primary-light)!important;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: var(--footer-height);
+    line-height: var(--footer-height);
+
+    padding: 0 1rem;
+
+    background-color: var(--primary-light);
+    box-shadow: 0 -2px 4px -1px rgba(0, 0, 0, 0.4);
+}
+
+

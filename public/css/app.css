@@ -7,6 +7,15 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
+
+    --header-height: 76px;
+    --footer-height: 2.5rem;
+
+    --primary: #356ABC;
+    --primary-darker: #325b9c;
+    --primary-light: #a1bfed;
+    --primary-dark: #04193b;
+
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
@@ -20,8 +29,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #3490dc;
-  --secondary: #6c757d;
+
   --success: #38c172;
   --info: #6cb2eb;
   --warning: #ffed4a;
@@ -2438,18 +2446,18 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: var(--primary-darker);
+  border-color: var(--primary-darker);
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: var(--primary-darker);
+  border-color: var(--primary-darker);
   box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
 }
 .btn-primary.disabled, .btn-primary:disabled {
@@ -2459,7 +2467,7 @@ fieldset:disabled a.btn {
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #2176bd;
+  background-color: var(--primary-darker);
   border-color: #1f6fb2;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
