@@ -12,24 +12,40 @@
     <body>
         <div id="page-container">
             <header>
-                <div class="vertical-center">
+                <nav class="navbar navbar-expand-md navbar-light fixed-top">
                     <a href="{{ route('start') }}"><img src="https://fontmeme.com/permalink/210514/7380c713c6ccc27634273d42b7c170f1.png" alt="pokemon-schriftart" border="0" height="60"></a>
-                    <a href="{{ route('trading') }}"><button>Trading</button></a>
-                    <a href="{{ route('wiki') }}"><button>Wiki</button></a>
-                    <a href="{{ route('grading') }}"><button>Grading</button></a>
-                    <a href="{{ route('profile') }}"><button>Profile</button></a>
-                </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="btn btn-primary btn-sm nav-button">
+                                <a class="nav-link" href="{{ route('trading') }}" aria-selected="false">Trading</a>
+                            </li>
+                            <li class="btn btn-primary btn-sm nav-button">
+                                <a class="nav-link" href="{{ route('wiki') }}" aria-selected="false">Wiki</a>
+                            </li>
+                            <li class="btn btn-primary btn-sm nav-button">
+                                <a class="nav-link" href="{{ route('grading') }}" aria-selected="false">Grading</a>
+                            </li>
+                            <li class="btn btn-primary btn-sm nav-button dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profile
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Edit Profile</a>
+                                    <a class="dropdown-item" href="#">Log out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </header>
-            <div id="content-wrap">
-                <!-- all other page content -->
-                <div id="content">
-                    @yield('content')
-                </div>
-            </div>
-            <footer>
-                <div class="vertical-center">
-                    Made by Insa Belter, Neelis Rüter and Noah Wagner
-                </div>
+            <main role="main" class="container">
+                @yield("content")
+            </main>
+            <footer class="footer">
+                Made by Insa Belter, Neelis Rüter and Noah Wagner
             </footer>
         </div>
     </body>
