@@ -8,9 +8,7 @@
  */
 :root {
 
-    --page-container-height: 91vh;
-    --header-height: 9vh;
-    --header-neg-height: -9vh;
+    --header-height: 80px;
     --footer-height: 2.5rem;
 
     --primary: #356ABC;

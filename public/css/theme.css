@@ -6,7 +6,7 @@ body {
 
 #page-container {
     position: relative;
-    min-height: var(--page-container-height);           /* 100 - Header height*/
+    min-height: calc(100vh - var(--header-height));           /* 100 - Header height*/
 }
 
 #content-wrap {
@@ -58,7 +58,7 @@ header {
     position: fixed;
     width: 100%;
     height: var(--header-height);            /* Header height*/
-    margin-top: var(--header-neg-height);       /* - Header height*/
+    margin-top: calc(var(--header-height)*-1);       /* - Header height*/
     z-index: 2;
 
     padding: 5px 10px;
@@ -75,9 +75,19 @@ footer {
 
     box-shadow: 0 -2px 4px -1px rgba(0, 0, 0, 0.4);
     background-color: var(--primary-light);
+
+    padding: 0 10px;
 }
 
 /* --- OTHER ---------------------------------*/
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 
 p {
     background-color: #1d68a7;
