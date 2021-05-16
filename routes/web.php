@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main');
-})->name('main');
+    return view('subpages.start');
+})->name('start');
 
 Route::get('grading', function () {
     return view('subpages.grading');

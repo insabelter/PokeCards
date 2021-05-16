@@ -1,0 +1,85 @@
+/* --- PAGE STRUCTURE ---------------------------------*/
+
+body {
+    background-color: var(--primary);
+}
+
+#page-container {
+    position: relative;
+    min-height: var(--page-container-height);           /* 100 - Header height*/
+}
+
+#content-wrap {
+    margin-top: var(--header-height);            /* Header height*/
+    padding-bottom: var(--footer-height);      /* Footer height */
+}
+
+#content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px;
+
+    background-color: var(--white);
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* X-Small devices (landscape phones, up to 576px) */
+@media (min-width: 576px) {
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    #content {
+        width: 80%;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    #content {
+        width: 70%;
+    }
+}
+
+/*X-Large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+}
+
+/*XX-Large devices (larger desktops, 1400px and up)*/
+@media (min-width: 1400px) {
+}
+
+/* --- HEADER AND FOOTER ---------------------------------*/
+
+header {
+    position: fixed;
+    width: 100%;
+    height: var(--header-height);            /* Header height*/
+    margin-top: var(--header-neg-height);       /* - Header height*/
+    z-index: 2;
+
+    padding: 5px 10px;
+
+    background-color: var(--primary-light);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: var(--footer-height);             /* Footer height */
+
+    box-shadow: 0 -2px 4px -1px rgba(0, 0, 0, 0.4);
+    background-color: var(--primary-light);
+}
+
+/* --- OTHER ---------------------------------*/
+
+p {
+    background-color: #1d68a7;
+    height: 500px;
+}
