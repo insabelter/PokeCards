@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,22 +15,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('subpages.start');
+    return view('pages.start');
 })->name('start');
 
-Route::get('grading', function () {
-    return view('subpages.grading');
-})->name('grading');
+// Trading -----------------------------------
+Route::get('marketplace', function () {
+    return view('pages.trading.marketplace');
+})->name('marketplace');
+Route::get('offers', function () {
+    return view('pages.trading.offers');
+})->name('offers');
 
-Route::get('trading', function () {
-    return view('subpages.trading');
-})->name('trading');
-
+// Wiki -----------------------------------
 Route::get('wiki', function () {
-    return view('subpages.wiki');
+    return view('pages.wiki');
 })->name('wiki');
 
-Route::get('profile', function () {
-    return view('subpages.profile');
-})->name('profile');
+// Grading -----------------------------------
+Route::get('grading', function () {
+    return view('pages.grading');
+})->name('grading');
+
+// Account -----------------------------------
+//Login
+Route::get('login', [LoginController::class,'index']) -> name("login");
+Route::post('login', [LoginController::class,'login']);
+
+//Profile
+Route::get('profile', [ProfileController::class,'index']) -> name("profile");
+Route::post('profile', [ProfileController::class,'edit']);
+
+
