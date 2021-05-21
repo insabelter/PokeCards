@@ -19,8 +19,14 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav ml-auto">
-                            <li class="btn btn-primary btn-sm nav-button">
-                                <a class="nav-link" href="{{ route('trading') }}" aria-selected="false">Trading</a>
+                            <li class="btn btn-primary btn-sm nav-button dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Trading
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('marketplace') }}">Marketplace</a>
+                                    <a class="dropdown-item" href="{{ route('offers') }}">Your Offers</a>
+                                </div>
                             </li>
                             <li class="btn btn-primary btn-sm nav-button">
                                 <a class="nav-link" href="{{ route('wiki') }}" aria-selected="false">Wiki</a>
@@ -33,6 +39,7 @@
                                     Profile
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('login') }}">Log in</a>
                                     <a class="dropdown-item" href="{{ route('profile') }}">Edit Profile</a>
                                     <a class="dropdown-item" href="#">Log out</a>
                                 </div>

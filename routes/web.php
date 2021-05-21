@@ -14,21 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('subpages.start');
+    return view('pages.start');
 })->name('start');
 
 Route::get('grading', function () {
-    return view('subpages.grading');
+    return view('pages.grading');
 })->name('grading');
 
-Route::get('trading', function () {
-    return view('subpages.trading');
-})->name('trading');
+Route::get('marketplace', function () {
+    return view('pages.trading.marketplace');
+})->name('marketplace');
+
+Route::get('offers', function () {
+    return view('pages.trading.offers');
+})->name('offers');
 
 Route::get('wiki', function () {
-    return view('subpages.wiki');
+    return view('pages.wiki');
 })->name('wiki');
 
+Route::get('login', function () {
+    return view('pages.account.login');
+})->name('login');
+
 Route::get('profile', function () {
-    return view('subpages.profile');
+    return view('pages.account.profile');
 })->name('profile');
