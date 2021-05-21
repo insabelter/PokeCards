@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Deploy to production
+      uses: appleboy/ssh-action@master
       with:
         username: neelis
         host: h2938377.stratoserver.net
