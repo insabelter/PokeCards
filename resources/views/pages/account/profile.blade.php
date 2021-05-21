@@ -25,19 +25,14 @@
                 <label for="telefonID">Telefon:</label>
                 <input type="text" class="form-control" id="telefonID" name="telefon" value="+01 23456789">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="">Update Information</button>
+            <button type="submit" class="btn btn-primary">Update Information</button>
         </fieldset>
     </form>
 
     <script>
-        let editing = false;
-        let fieldset= document.getElementById("editableFieldset");
-        let startEdit= document.getElementById("startEditing");
-        console.log(fieldset)
         function startEditing(){
-            editing = true;
-            fieldset.disabled = false;
-            startEdit.disabled = true;
+            document.getElementById("editableFieldset").disabled = false;
+            document.getElementById("startEditing").disabled = true;
         }
     </script>
 @endsection
