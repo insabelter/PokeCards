@@ -12,6 +12,14 @@ class LoginController extends Controller
 
     public function login(){
 //        TODO!!!
-        return view('pages.account.login_successful');
+        $username = request("username");
+        $password = request("password");
+        if($password == "password"){
+            return view('pages.account.login_successful', ['username' => $username]);
+        }
+        else{
+            return redirect('login') -> with("err","Credentials are not correct!");
+        }
+
     }
 }

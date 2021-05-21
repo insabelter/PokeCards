@@ -20,4 +20,6 @@
         </form>
     </p>
 
+    <p>{{session("err")}}</p>
+
 @endsection
