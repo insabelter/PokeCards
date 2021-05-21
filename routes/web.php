@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,30 +14,37 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('pages.start');
 })->name('start');
 
-Route::get('grading', function () {
-    return view('pages.grading');
-})->name('grading');
-
+// Trading -----------------------------------
 Route::get('marketplace', function () {
     return view('pages.trading.marketplace');
 })->name('marketplace');
-
 Route::get('offers', function () {
     return view('pages.trading.offers');
 })->name('offers');
 
+// Wiki -----------------------------------
 Route::get('wiki', function () {
     return view('pages.wiki');
 })->name('wiki');
 
-Route::get('login', function () {
-    return view('pages.account.login');
-})->name('login');
+// Grading -----------------------------------
+Route::get('grading', function () {
+    return view('pages.grading');
+})->name('grading');
 
+// Account -----------------------------------
+//Login
+Route::get('login', [LoginController::class,'index']) -> name("login");
+Route::post('login', [LoginController::class,'login']);
+
+//Profile
 Route::get('profile', function () {
     return view('pages.account.profile');
 })->name('profile');
+
+
