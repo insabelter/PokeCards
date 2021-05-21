@@ -29,7 +29,7 @@
         </fieldset>
     </form>
 
-    <script>
+    <script type="text/javascript">
         let editing = false;
         let fieldset= document.getElementById("editableFieldset");
         let startEdit= document.getElementById("startEditing");
