@@ -29,7 +29,7 @@
         </fieldset>
     </form>
 
-    <script>
+    <script type="text/javascript">
         function startEditing(){
             document.getElementById("editableFieldset").disabled = false;
             document.getElementById("startEditing").disabled = true;
