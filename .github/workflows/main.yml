@@ -1,0 +1,18 @@
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+  merge:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to production
+      with:
+        username: neelis
+        host: h2938377.stratoserver.net
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: 'cd /var/www/pokecards.site && ./server_deploy.sh'
