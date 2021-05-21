@@ -3,7 +3,7 @@ name: CD
 on:
   push:
     branches: [ main ]
-  merge:
+  pull_request:
     branches: [ main ]
 
 jobs:
