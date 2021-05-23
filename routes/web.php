@@ -47,4 +47,10 @@ Route::post('login', [LoginController::class,'login']);
 Route::get('profile', [ProfileController::class,'index']) -> name("profile");
 Route::post('profile', [ProfileController::class,'edit']);
 
+//All routes that are important for the authentication are generated
+Auth::routes();
 
+// Login succesful -----------------------------------
+Route::get('successful', function () {
+    return view('pages.account.login_successful');
+})->name('successful');
