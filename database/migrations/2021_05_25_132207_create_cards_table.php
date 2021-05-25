@@ -14,11 +14,11 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->id();
+            $table->id()->unique();
             $table->string('name');
             $table->string('cardtype');
-            $table->string('smallImage');
-            $table->string('largeImage');
+            $table->string('smallImage')->nullable();
+            $table->string('largeImage')->nullable();
             $table->string('setId');
         });
     }

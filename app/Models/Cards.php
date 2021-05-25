@@ -10,7 +10,11 @@ class Cards extends Model
     protected $fillable= [
         'name',
         'cardtype',
-        'smallImage',
-        'largeImage'
     ];
+
+    protected $primaryKey=[
+        'id'
+    ];
+
+
 }

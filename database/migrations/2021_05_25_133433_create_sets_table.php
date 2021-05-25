@@ -14,11 +14,11 @@ class CreateSetsTable extends Migration
     public function up()
     {
         Schema::create('sets', function (Blueprint $table) {
-            $table->id('setId');
+            $table->id('setId')->unique();
             $table->string('name');
             $table->string('seriesName');
             $table->integer('printedTotal');
-            $table->string('releaseDate');
+            $table->string('releaseDate')->nullable();
         });
     }
 

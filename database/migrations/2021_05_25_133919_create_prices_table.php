@@ -14,12 +14,12 @@ class CreatePricesTable extends Migration
     public function up()
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->id('cardId');
-            $table->float('normal');
-            $table->float('holofoil');
-            $table->float('reverseHolofoil');
-            $table->float('firstEditionHolofoil');
-            $table->string('buyURL');
+            $table->id('cardId')->unique();
+            $table->float('normal')->nullable();
+            $table->float('holofoil')->nullable();
+            $table->float('reverseHolofoil')->nullable();
+            $table->float('firstEditionHolofoil')->nullable();
+            $table->string('buyURL')->nullable();
         });
     }
 

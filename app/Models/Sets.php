@@ -13,4 +13,8 @@ class Sets extends Model
         'printedTotal',
         'releaseDate'
     ];
+
+    protected $primaryKey=[
+        'setId'
+    ];
 }

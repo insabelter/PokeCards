@@ -14,4 +14,7 @@ class Prices extends Model
         'firstEditionHolofoil',
         'buyURL'
     ];
+    protected $primaryKey=[
+        'cardId'
+    ];
 }
