@@ -15,7 +15,7 @@ class CreateSetsTable extends Migration
     {
         Schema::create('sets', function (Blueprint $table) {
             $table->id('setId')->unique();
-            $table->string('name');
+            $table->string('setName');
             $table->string('seriesName');
             $table->integer('printedTotal');
             $table->string('releaseDate')->nullable();

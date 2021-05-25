@@ -20,7 +20,7 @@
         <tbody>
         @foreach($cards as $card)
             <tr>
-                <td>{{ $card->setId }}</td>
+                <td>{{ $card->setName }}</td>
                 <td>{{ $card->name }}</td>
                 <td>{{ $card->cardtype }}</td>
                 <td id="accordion{{$card->id}}">
