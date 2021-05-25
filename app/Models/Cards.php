@@ -7,14 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cards extends Model
 {
-    protected $fillable= [
-        'name',
-        'cardtype',
-    ];
-
-    protected $primaryKey=[
-        'id'
-    ];
-
+    protected $table = 'Cards';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public $timestamps = false;
 
 }
