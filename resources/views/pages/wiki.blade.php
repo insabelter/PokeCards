@@ -8,7 +8,7 @@
 
     <h1>Wiki</h1>
 
-    <table class="table table-responsive-sm">
+    <table class="table table-responsive-sm table-hover">
         <thead>
         <tr>
             <th scope="col">Set</th>
@@ -32,7 +32,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="5" id="collapse{{$card->id}}" class="collapse" data-parent="#accordion{{$card->id}}">
+                <td colspan="5" id="collapse{{$card->id}}" class="collapse" data-parent="#accordion{{$card->id}}" style="text-align: center;">
                     <img src="{{ $card->image }}" alt="Image {{ $card->name }}" height="500px">
                 </td>
             </tr>
