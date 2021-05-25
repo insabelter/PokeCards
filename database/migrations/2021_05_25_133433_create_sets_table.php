@@ -19,6 +19,8 @@ class CreateSetsTable extends Migration
             $table->string('seriesName');
             $table->integer('printedTotal');
             $table->string('releaseDate')->nullable();
+            $table->string('setSymbol')->nullable();
+            $table->string('setLogo')->nullable();
         });
     }
 
