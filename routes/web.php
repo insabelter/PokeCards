@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WikiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,7 @@ Route::get('offers', function () {
 })->name('offers');
 
 // Wiki -----------------------------------
-Route::get('wiki', function () {
-    return view('pages.wiki');
-})->name('wiki');
+Route::get('wiki', [WikiController::class,'index']) -> name("wiki");
 
 // Grading -----------------------------------
 Route::get('grading', function () {
