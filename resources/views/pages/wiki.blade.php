@@ -8,7 +8,7 @@
 
     <h1>Wiki</h1>
 
-    <table class="table table-hover table-responsive">
+    <table class="table table-responsive-sm">
         <thead>
         <tr>
             <th scope="col">Set</th>
@@ -30,24 +30,25 @@
                         Show
                     </button>
                 </td>
-                <td id="collapse{{$card->id}}" class="collapse" data-parent="#accordion{{$card->id}}">
+            </tr>
+            <tr>
+                <td colspan="5" id="collapse{{$card->id}}" class="collapse" data-parent="#accordion{{$card->id}}">
                     <img src="{{ $card->image }}" alt="Image {{ $card->name }}" height="500px">
                 </td>
             </tr>
-
-            <script type="text/javascript">
-                function toggleText(obj){
-                    obj.classList.toggle( "active" );
-                    if (obj.classList.contains("active")) {
-                        obj.textContent = "Hide";
-                    } else {
-                        obj.textContent = "Show";
-                    }
-                }
-            </script>
         @endforeach
         </tbody>
     </table>
 
+    <script type="text/javascript">
+        function toggleText(obj){
+            obj.classList.toggle( "active" );
+            if (obj.classList.contains("active")) {
+                obj.textContent = "Hide";
+            } else {
+                obj.textContent = "Show";
+            }
+        }
+    </script>
 
 @endsection
