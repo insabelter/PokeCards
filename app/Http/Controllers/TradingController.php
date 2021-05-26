@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class TradingController extends Controller
 {
     public function marketplace(){
+//        TODO
 //        Example Data:
         $offerArray = [];
         $offer_arr1=array("id"=>"1","set"=>"Base", "name"=>"Alakazam", "price"=>"50", "user"=>"UserXYZ", "image"=>"https://images.pokemontcg.io/base1/1_hires.png");
