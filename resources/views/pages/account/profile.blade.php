@@ -33,6 +33,8 @@
 
     <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
         @csrf
+        <input type="text" class="form-control" name="confirmdelete" placeholder="type in DELETE to confirm deletion of your account.">
+        <br />
         <button type="submit" class="btn btn-primary">Delete my account</button>
     </form>
 

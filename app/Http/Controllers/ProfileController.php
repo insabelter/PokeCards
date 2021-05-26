@@ -15,10 +15,20 @@ class ProfileController extends Controller
         echo("Profile edited!");
     }
 
-    public function deleteAccount(Request $request, $id) {
-        $user =  auth()->user();
-        $user->delete();
+    public function deleteAccount(Request $request) {
 
-        return redirect('/');
+        $request->validate([
+            'confirmdelete' => 'required'
+        ]);
+
+        if($request->confirmdelete == "DELETE"){
+            $user =  auth()->user();
+            $user->delete();
+
+            return redirect('/');
+        }
+
+        return redirect('/grading');
+
     }
 }
