@@ -14,4 +14,11 @@ class ProfileController extends Controller
 //        TODO
         echo("Profile edited!");
     }
+
+    public function deleteAccount(Request $request, $id) {
+        $user =  auth()->user();
+        $user->delete();
+
+        return redirect('/');
+    }
 }

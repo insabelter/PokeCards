@@ -46,6 +46,7 @@ Route::post('login', [LoginController::class,'login']);
 //Profile
 Route::get('profile', [ProfileController::class,'index']) -> name("profile");
 Route::post('profile', [ProfileController::class,'edit']);
+Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
 //All routes that are important for the authentication are generated
 Auth::routes();
@@ -54,3 +55,4 @@ Auth::routes();
 Route::get('successful', function () {
     return view('pages.account.login_successful');
 })->name('successful');
+

@@ -29,6 +29,13 @@
         </fieldset>
     </form>
 
+    <br />
+
+    <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary">Delete my account</button>
+    </form>
+
     <script type="text/javascript">
         function startEditing(){
             document.getElementById("editableFieldset").disabled = false;
