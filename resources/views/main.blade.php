@@ -52,7 +52,7 @@
                 @yield("content")
             </main>
             <footer class="footer">
-                Made by Insa Belter, Neelis Rüter and Noah Wagner
+                By Insa Belter, Neelis Rüter and Noah Wagner
             </footer>
         </div>
     </body>
