@@ -1,6 +1,8 @@
 # For devs
 Rename the `.env.example` locally to `.env` and assign the value `DP_PASSWORD` accordingly. If you don't know this password you are not supposed to.
 
+#### NEVER push the `.env` into the remote repository.
+
 
 
 
