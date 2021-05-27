@@ -19,4 +19,7 @@ class WikiController extends Controller
     public function getSetName($setId){
         return Sets::find($setId)->name;
     }
+    public function filter($cards,$filterstring){
+        return array_keys($cards,$filterstring);
+    }
 }
