@@ -11,17 +11,25 @@
         <form method="post" action="/offers">
             @csrf
             <div class="form-group">
-                <label for="usernameID">Username:</label>
-                <input type="text" class="form-control" id="usernameID" name="username" placeholder="Username">
+                <label for="cardnameID">Card Name:</label>
+                <input type="text" class="form-control" id="cardnameID" name="cardname" placeholder="Name">
             </div>
             <div class="form-group">
-                <label for="passwordID">Password:</label>
-                <input type="password" class="form-control" id="passwordID" name="password" placeholder="Password">
+                <label for="setID">Set:</label>
+                <input type="text" class="form-control" id="setID" name="set" placeholder="Set">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <div class="form-group">
+                <label for="priceID">Price:</label>
+                <input type="text" class="form-control" id="priceID" name="price" placeholder="Price">
+            </div>
+            <div class="form-group">
+                <label for="imageID">Image URL:</label>
+                <input type="text" class="form-control" id="imageID" name="image" placeholder="Image URL">
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
         </form>
 
-        <p>{{session("msg")}}</p>
+        <p style="margin-top: 10px;">{{session("msg")}}</p>
     </p>
 
     <p>

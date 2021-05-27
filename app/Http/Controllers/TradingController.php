@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 class TradingController extends Controller
 {
-    public function marketplace(){
+
+
+    public function marketplace(Request $request){
 //        TODO
 //        Example Data:
         $offerArray = [];
@@ -26,10 +28,12 @@ class TradingController extends Controller
         $offer5=(object)$offer_arr5;
         $offerArray[] = $offer5;
 
+        $request->session()->put('allOffersArray', $offerArray);
+
         return view('pages.trading.marketplace', compact('offerArray'));
     }
 
-    public function offers(){
+    public function offers(Request $request){
         //        TODO
 //        Example Data:
         $offerArray = [];
@@ -43,11 +47,21 @@ class TradingController extends Controller
         $offer3=(object)$offer_arr3;
         $offerArray[] = $offer3;
 
+        $request->session()->put('userOffersArray', $offerArray);
+
         return view('pages.trading.offers', compact('offerArray'));
     }
 
-    public function newOffer() {
-//        TODO
-        return redirect('login') -> with("msg","New Offer created!");
+    public function newOffer(Request $request) {
+
+        $offerArray = $request->session()->get('userOffersArray');
+        
+        $new_offer_arr=array("id"=>"?","set"=>request("set"), "name"=>request("cardname"), "price"=>request("price"), "user"=>"CurrentUser", "image"=>request("image"));
+        $new_offer=(object)$new_offer_arr;
+        $offerArray[] = $new_offer;
+
+        $request->session()->put('userOffersArray', $offerArray);
+
+        return view('pages.trading.offers', compact('offerArray')) -> with("msg","New Offer created!");
     }
 }
