@@ -23,7 +23,7 @@
         <tbody>
         @if(isset($_GET['pokemonname']))
             @foreach($cards as $card)
-                @if(str_contains($card->name,$_GET['pokemonname']))
+                @if(str_contains($card->name,$_GET['pokemonname']) && $_GET['pokemonname']!="" && $_GET['pokemonname']!=" ")
                 <tr>
                     <td>{{ $card->setName }}</td>
                     <td>{{ $card->name }}</td>
