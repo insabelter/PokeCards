@@ -24,9 +24,8 @@ Route::get('/', function () {
 
 // Trading -----------------------------------
 Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
-Route::get('offers', function () {
-    return view('pages.trading.offers');
-})->name('offers');
+Route::get('offers', [TradingController::class,'offers']) -> name("offers");
+Route::post('offers', [TradingController::class,'newOffer']);
 
 // Wiki -----------------------------------
 Route::get('wiki', [WikiController::class,'index']) -> name("wiki");
