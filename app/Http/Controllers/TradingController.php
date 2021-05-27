@@ -75,6 +75,6 @@ class TradingController extends Controller
 
         $request->session()->put('userOffersArray', $offerArray);
 
-        return view('pages.trading.offers', compact('offerArray')) -> with("msg","New Offer created!");
+        return redirect('offers') -> with("msg","New Offer created!");
     }
 }
