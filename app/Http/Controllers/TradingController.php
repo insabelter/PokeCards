@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 class TradingController extends Controller
 {
-    public function marketplace(){
+
+
+    public function marketplace(Request $request){
 //        TODO
 //        Example Data:
         $offerArray = [];
@@ -26,6 +28,40 @@ class TradingController extends Controller
         $offer5=(object)$offer_arr5;
         $offerArray[] = $offer5;
 
+        $request->session()->put('allOffersArray', $offerArray);
+
         return view('pages.trading.marketplace', compact('offerArray'));
+    }
+
+    public function offers(Request $request){
+        //        TODO
+//        Example Data:
+        $offerArray = [];
+        $offer_arr1=array("id"=>"1","set"=>"Base", "name"=>"Alakazam", "price"=>"50", "user"=>"UserXYZ", "image"=>"https://images.pokemontcg.io/base1/1_hires.png");
+        $offer1=(object)$offer_arr1;
+        $offerArray[] = $offer1;
+        $offer_arr2=array("id"=>"2","set"=>"Jungle", "name"=>"Bellsprout", "price"=>"100.000", "user"=>"CoolGuy", "image"=>"https://images.pokemontcg.io/base2/49_hires.png");
+        $offer2=(object)$offer_arr2;
+        $offerArray[] = $offer2;
+        $offer_arr3=array("id"=>"3","set"=>"Fossil", "name"=>"Hypno", "price"=>"2", "user"=>"PenguinBuyer", "image"=>"https://images.pokemontcg.io/base3/23_hires.png");
+        $offer3=(object)$offer_arr3;
+        $offerArray[] = $offer3;
+
+        $request->session()->put('userOffersArray', $offerArray);
+
+        return view('pages.trading.offers', compact('offerArray'));
+    }
+
+    public function newOffer(Request $request) {
+
+        $offerArray = $request->session()->get('userOffersArray');
+        
+        $new_offer_arr=array("id"=>"?","set"=>request("set"), "name"=>request("cardname"), "price"=>request("price"), "user"=>"CurrentUser", "image"=>request("image"));
+        $new_offer=(object)$new_offer_arr;
+        $offerArray[] = $new_offer;
+
+        $request->session()->put('userOffersArray', $offerArray);
+
+        return view('pages.trading.offers', compact('offerArray')) -> with("msg","New Offer created!");
     }
 }
