@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TradingController;
 use App\Http\Controllers\WikiController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,7 @@ Route::get('/', function () {
 })->name('start');
 
 // Trading -----------------------------------
-Route::get('marketplace', function () {
-    return view('pages.trading.marketplace');
-})->name('marketplace');
+Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
 Route::get('offers', function () {
     return view('pages.trading.offers');
 })->name('offers');

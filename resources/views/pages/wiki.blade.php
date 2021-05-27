@@ -19,6 +19,7 @@
         </thead>
         <tbody>
         @foreach($cards as $card)
+            @if($card->name =="Alakazam")
             <tr>
                 <td>{{ $card->setName }}</td>
                 <td>{{ $card->name }}</td>
@@ -34,6 +35,7 @@
                     <img src="{{ $card->smallImage }}" alt="Image {{ $card->name }}" height="500px">
                 </td>
             </tr>
+            @endif
         @endforeach
         </tbody>
     </table>

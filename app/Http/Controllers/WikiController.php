@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class WikiController extends Controller
 {
     public function index(){
-//        TODO: Get DB Data
-//        Example Data:
-        $allcards = Cards::all();
+
+        // $cards now contains a leftJoin with Sets on Cards
         $cards = Cards::query()->leftJoin('Sets as Sets','Cards.setId','=','Sets.setId')->get();
+
         return view('pages.wiki', compact('cards'));
     }
 
