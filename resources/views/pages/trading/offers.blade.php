@@ -31,11 +31,11 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
+                    <p style="margin-top: 10px;">{{session("msg")}}</p>
                 </div>
             </div>
         </div>
 
-        <p style="margin-top: 10px;">{{session("msg")}}</p>
     </div>
 
     <div>
