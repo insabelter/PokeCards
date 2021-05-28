@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 // Trading -----------------------------------
 Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
+Route::get('watchlist', [TradingController::class,'watchlist']) -> name("watchlist");
 Route::get('offers', [TradingController::class,'offers']) -> name("offers");
 Route::post('offers', [TradingController::class,'newOffer']);
 
