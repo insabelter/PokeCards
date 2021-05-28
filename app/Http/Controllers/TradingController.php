@@ -39,6 +39,24 @@ class TradingController extends Controller
         return view('pages.trading.marketplace', compact('offerArray'));
     }
 
+    public function watchlist(Request $request){
+//        TODO
+//        Example Data:
+
+        $offerArray = [];
+
+        $offer_arr1 = array("id" => "1", "set" => "Base", "name" => "Alakazam", "price" => "50", "user" => "UserXYZ", "image" => "https://images.pokemontcg.io/base1/1_hires.png");
+        $offer1 = (object)$offer_arr1;
+        $offerArray[] = $offer1;
+        $offer_arr2 = array("id" => "2", "set" => "Jungle", "name" => "Bellsprout", "price" => "100.000", "user" => "CoolGuy", "image" => "https://images.pokemontcg.io/base2/49_hires.png");
+        $offer2 = (object)$offer_arr2;
+        $offerArray[] = $offer2;
+
+        $request->session()->put('watchlistOffersArray', $offerArray);
+
+        return view('pages.trading.watchlist', compact('offerArray'));
+    }
+
     public function offers(Request $request){
         //        TODO
 //        Example Data:
