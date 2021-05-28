@@ -10,6 +10,7 @@
 
     <form name="namesearch" action="" method="get">
         <input type="text" name="pokemonname" id="pokemonname" placeholder="Enter Name of Pokemon">
+        <input type="submit" name="submit" id="submit" value="Submit">
     </form>
     <table class="table table-responsive-sm table-hover">
         <thead>
