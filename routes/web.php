@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\TradingController;
+use App\Http\Controllers\WikiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,17 +23,12 @@ Route::get('/', function () {
 })->name('start');
 
 // Trading -----------------------------------
-Route::get('marketplace', function () {
-    return view('pages.trading.marketplace');
-})->name('marketplace');
-Route::get('offers', function () {
-    return view('pages.trading.offers');
-})->name('offers');
+Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
+Route::get('offers', [TradingController::class,'offers']) -> name("offers");
+Route::post('offers', [TradingController::class,'newOffer']);
 
 // Wiki -----------------------------------
-Route::get('wiki', function () {
-    return view('pages.wiki');
-})->name('wiki');
+Route::get('wiki', [WikiController::class,'index']) -> name("wiki");
 
 // Grading -----------------------------------
 Route::get('grading', function () {

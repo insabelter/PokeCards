@@ -54,4 +54,12 @@ nav {
     box-shadow: 0 -2px 4px -1px rgba(0, 0, 0, 0.4);
 }
 
+@media (max-width: 575.98px) {
+    #offerImage {
+        float: none!important;
+        margin: 20px;
+    }
+}
+
+
 
