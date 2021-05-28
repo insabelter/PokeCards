@@ -47,8 +47,3 @@ Route::get('profile', [ProfileController::class,'index']) -> name("profile");
 Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit');
 Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
-// Login succesful -----------------------------------
-Route::get('successful', function () {
-    return view('pages.account.login_successful');
-})->name('successful');
-
