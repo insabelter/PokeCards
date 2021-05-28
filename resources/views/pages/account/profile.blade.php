@@ -6,11 +6,11 @@
     <h1>Profile</h1>
 
     <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()">Edit Information</button>
-    <form method="post" action="/profile">
+    <form action="{{route('edit', Auth::user()->id)}}"  method="post">
         @csrf
         <div class="form-group">
             <label for="usernameID">Username:</label>
-            <input type="text" class="form-control" id="usernameID" name="username" value="User" readonly>
+            <input type="text" class="form-control" id="usernameID" name="username" value={{ Auth::user()->name }} readonly>
         </div>
         <fieldset id="editableFieldset" disabled>
             <div class="form-group">
@@ -18,8 +18,8 @@
                 <input type="password" class="form-control" id="passwordID" name="password" value="Password">
             </div>
             <div class="form-group">
-                <label for="emailID">E-Mail:</label>
-                <input type="email" class="form-control" id="emailID" name="email" value="test@mail.com">
+                <label for="email">E-Mail:</label>
+                <input type="email" class="form-control" id="email" name="email" value={{ Auth::user()->email }}>
             </div>
             <div class="form-group">
                 <label for="telefonID">Telefon:</label>
@@ -27,6 +27,15 @@
             </div>
             <button type="submit" class="btn btn-primary">Update Information</button>
         </fieldset>
+    </form>
+
+    <br />
+
+    <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
+        @csrf
+        <input type="text" class="form-control" name="confirmdelete" placeholder="type in DELETE to confirm deletion of your account.">
+        <br />
+        <button type="submit" class="btn btn-primary">Delete my account</button>
     </form>
 
     <script type="text/javascript">

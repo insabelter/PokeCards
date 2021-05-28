@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TradingController;
 use App\Http\Controllers\WikiController;
 use Illuminate\Support\Facades\Route;
@@ -36,12 +36,19 @@ Route::get('grading', function () {
 })->name('grading');
 
 // Account -----------------------------------
-//Login
-Route::get('login', [LoginController::class,'index']) -> name("login");
-Route::post('login', [LoginController::class,'login']);
+
+//All routes that are important for the authentication are generated
+Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 //Profile
 Route::get('profile', [ProfileController::class,'index']) -> name("profile");
-Route::post('profile', [ProfileController::class,'edit']);
+Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit');
+Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
+// Login succesful -----------------------------------
+Route::get('successful', function () {
+    return view('pages.account.login_successful');
+})->name('successful');
 

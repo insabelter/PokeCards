@@ -3,10 +3,9 @@
 @section('title', 'Login')
 
 @section('content')
-    <h1>Login</h1>
+    <h1>Login successful</h1>
     <p>
-        Login successful!
-        Welcome {{ $username  }}!
+        Welcome {{ Auth::user()->name }}!
     </p>
 
 
