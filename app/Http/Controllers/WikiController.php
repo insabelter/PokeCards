@@ -12,7 +12,6 @@ class WikiController extends Controller
 
         // $cards now contains a leftJoin with Sets on Cards
         $cards = Cards::query()->leftJoin('Sets as Sets','Cards.setId','=','Sets.setId')->get();
-
         return view('pages.wiki', compact('cards'));
     }
 
