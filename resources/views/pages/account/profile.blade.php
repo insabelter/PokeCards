@@ -35,13 +35,27 @@
         @csrf
         <input type="text" class="form-control" name="confirmdelete" placeholder="type in DELETE to confirm deletion of your account.">
         <br />
-        <button type="submit" class="btn btn-primary">Delete my account</button>
+        <button type="submit" class="btn btn-primary" onclick="confirmMesage()">Delete my account</button>
     </form>
 
     <script type="text/javascript">
         function startEditing(){
             document.getElementById("editableFieldset").disabled = false;
             document.getElementById("startEditing").disabled = true;
+        }
+
+        function confirmMesage()
+        {
+            var conVal = confirm("You have to confirm !!");
+            if (conVal == true)
+            {
+                $val = "OK";
+            }
+            else
+            {
+                $val = "NO";
+            }
+            alert(val);
         }
     </script>
 @endsection
