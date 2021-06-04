@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main_no_navbar')
 
 @section('title', 'Not Found')
 
