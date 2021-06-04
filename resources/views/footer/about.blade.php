@@ -6,10 +6,10 @@
     <h1>About Pok&eacute;Cards</h1>
 
     <p>
-        This Website was created by Insa Belter, Neelis Rüter and Noah Wagner as a university project.
+        This Website was created by <b>Insa Belter</b>, <b>Neelis Rüter</b> and <b>Noah Wagner</b> as a university project.
     </p>
     <p>
-        The card data is gathered from the <a href="https://pokemontcg.io/">Pokémon TCG Developers API</a>
+        The card data is gathered from the <a href="https://pokemontcg.io/">Pokémon TCG Developers API</a>.
     </p>
 
     <h2>Contact</h2>
