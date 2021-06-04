@@ -33,7 +33,7 @@ Route::get('watchlist', [TradingController::class,'watchlist']) -> name("watchli
 Route::get('offers', [TradingController::class,'offers']) -> name("offers");
 Route::post('offers', [TradingController::class,'newOffer']);
 
-// Wiki -----------------------------------
+// wiki -----------------------------------
 Route::get('card-search', [WikiController::class,'card_search']) -> name("card-search");
 Route::get('set-explorer', [WikiController::class,'set_explorer']) -> name("set-explorer");
 
