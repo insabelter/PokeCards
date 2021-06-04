@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', '')
+@section('title', 'About')
 
 @section('content')
     <h1>About Pok&eacute;Cards</h1>

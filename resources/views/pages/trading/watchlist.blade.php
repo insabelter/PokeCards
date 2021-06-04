@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Offers')
+@section('title', 'Watchlist')
 
 @section('content')
     <h1>Watchlist</h1>

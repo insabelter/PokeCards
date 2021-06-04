@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Wiki')
+@section('title', 'Set Explorer')
 
 @section('content')
     <h1>Set Explorer</h1>

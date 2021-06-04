@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Wiki')
+@section('title', 'Card Search')
 
 @section('content')
     <h1>Card Search</h1>
