@@ -4,5 +4,5 @@
 
 @section('content')
     <h1>Set Explorer</h1>
-    To be Done ...
+    In Progress ...
 @endsection
