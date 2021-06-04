@@ -4,6 +4,6 @@
 
 @section('content')
     <h1>Start</h1>
-    <p></p>
-    <p></p>
+    In Progress ... <br>
+    We are working hard on it :)
 @endsection

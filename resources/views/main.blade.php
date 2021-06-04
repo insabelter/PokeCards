@@ -82,7 +82,9 @@
                 @yield("content")
             </main>
             <footer class="footer">
-                By Insa Belter, Neelis Rüter and Noah Wagner
+                <a href="{{ route('about') }}" style="margin-right: 30px;">{{ __('About') }}</a>
+                <a href="{{ route('privacy') }}">{{ __('Privacy') }}</a>
+                <span class="d-none d-sm-inline" style="position: fixed; right: 15px;">By Insa Belter, Neelis Rüter and Noah Wagner</span>
             </footer>
         </div>
     </body>

@@ -1,4 +1,7 @@
 /* -- GENERAL ---------------- */
+p {
+    margin-top: 15px;
+}
 
 .btn-primary {
     background-color: var(--primary);
