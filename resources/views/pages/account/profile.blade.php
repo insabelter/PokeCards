@@ -9,9 +9,9 @@
 {{--    <button type="button" class="btn btn-sm btn-primary" onclick="{{$profile::sendVarificationMail()}}">Send Varification Mail</button>--}}
     <form action="{{route('verficationMail')}}" method="get" style="margin: 15px 0;">
         <h4 style="margin-bottom: 15px; display: inline-block; margin-right: 15px;">({{$verified_text}})</h4>
-{{--        @if(!$verified)--}}
+        @if(!$verified)
             <button type="submit" class="btn btn-primary btn-sm" style="display: inline-block;">Send New Varification Mail</button>
-{{--        @endif--}}
+        @endif
     </form>
 
 
