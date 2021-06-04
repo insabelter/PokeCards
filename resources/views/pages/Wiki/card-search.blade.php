@@ -3,10 +3,7 @@
 @section('title', 'Wiki')
 
 @section('content')
-
-
-
-    <h1>Wiki</h1>
+    <h1>Card Search</h1>
 
     <form name="namesearch" action="" method="get" style="margin: 15px 0;">
         <div class="col-lg-3 col-md-6" style="padding: 0;">

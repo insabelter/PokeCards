@@ -29,7 +29,8 @@ Route::get('offers', [TradingController::class,'offers']) -> name("offers");
 Route::post('offers', [TradingController::class,'newOffer']);
 
 // Wiki -----------------------------------
-Route::get('wiki', [WikiController::class,'index']) -> name("wiki");
+Route::get('card-search', [WikiController::class,'card_search']) -> name("card-search");
+Route::get('set-explorer', [WikiController::class,'set_explorer']) -> name("set-explorer");
 
 // Grading -----------------------------------
 Route::get('grading', function () {

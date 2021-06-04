@@ -29,8 +29,14 @@
                                     <a class="dropdown-item" href="{{ route('offers') }}">Your Offers</a>
                                 </div>
                             </li>
-                            <li class="btn btn-primary btn-sm nav-button">
-                                <a class="nav-link" href="{{ route('wiki') }}" aria-selected="false">Wiki</a>
+                            <li class="btn btn-primary btn-sm nav-button dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Wiki
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('card-search') }}">Card Search</a>
+                                    <a class="dropdown-item" href="{{ route('set-explorer') }}">Set Explorer</a>
+                                </div>
                             </li>
                             <li class="btn btn-primary btn-sm nav-button">
                                 <a class="nav-link" href="{{ route('grading') }}" aria-selected="false">Grading</a>
