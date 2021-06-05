@@ -45,6 +45,8 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
+                                <input type="checkbox" onclick="showPassword()">Show Password
+
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,4 +76,14 @@
         </div>
     </div>
 </div>
+    <script>
+        function showPassword() {
+            const x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 @endsection
