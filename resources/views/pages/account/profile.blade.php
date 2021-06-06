@@ -29,11 +29,9 @@
         </fieldset>
     </form>
 
-    <br />
+    <br/>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccount">Select Pokémon</button>
-
-
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccount">Delete my account</button>
 
     <script type="text/javascript">
         function startEditing(){
@@ -47,7 +45,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Please insert DELETE to delete your account.</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Please insert your password to delete your account.</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -55,12 +53,14 @@
                 <div class="modal-body">
                     <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
                         @csrf
-                        <input type="text" class="form-control" name="confirmdelete" placeholder="type in DELETE to confirm deletion of your account.">
+                        <input type="password" class="form-control" name="confirmdelete" placeholder="type in your password to confirm deletion of your account.">
+                        <br/>
                         <button type="submit" class="btn btn-primary">Delete my account</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
                 </div>
             </div>
         </div>
