@@ -45,13 +45,14 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                <button  type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePssword()">Show Password </button>
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePssword()">Show Password </button>
                             </div>
                         </div>
 
