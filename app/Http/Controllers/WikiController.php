@@ -27,7 +27,7 @@ class WikiController extends Controller
                 array_push($seriesNames, $seriesName);
             }
         }
-        // setsPerSeries is an array which includes: seriesKey -> array of sets of this series
+        // setsPerSeries is an array which includes: seriesName -> array of sets of this series
         $setsPerSeries = [];
         foreach ($sets as $set){
             $thisSeries = $set->seriesName;
@@ -36,7 +36,7 @@ class WikiController extends Controller
             }
             array_push($setsPerSeries[$thisSeries], $set);
         }
-        
+
         return view('pages.wiki.set-explorer', compact('setsPerSeries'));
     }
 
