@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cards;
 use App\Models\Sets;
 use Illuminate\Http\Request;
+use function Sodium\add;
 
 class WikiController extends Controller
 {
@@ -16,7 +17,27 @@ class WikiController extends Controller
     }
 
     public function set_explorer(){
-        return view('pages.wiki.set-explorer');
+        $sets = Sets::all();
+
+        // all seriesNames are collected in an array
+        $seriesNames = [];
+        foreach ($sets as $set){
+            $seriesName = $set->seriesName;
+            if(!in_array($seriesName, $seriesNames)){
+                array_push($seriesNames, $seriesName);
+            }
+        }
+        // setsPerSeries is an array which includes: seriesKey -> array of sets of this series
+        $setsPerSeries = [];
+        foreach ($sets as $set){
+            $thisSeries = $set->seriesName;
+            if(!key_exists($thisSeries, $setsPerSeries)){
+                $setsPerSeries[$thisSeries] = [];
+            }
+            array_push($setsPerSeries[$thisSeries], $set);
+        }
+        
+        return view('pages.wiki.set-explorer', compact('setsPerSeries'));
     }
 
     public function getSetName($setId){
