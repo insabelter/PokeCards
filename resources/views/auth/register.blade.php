@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
-                                <input type="checkbox" onclick="showPassword()">Show Password
+                                <button  type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePssword()">Show Password </button>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -76,14 +76,15 @@
         </div>
     </div>
 </div>
+
     <script>
         function showPassword() {
             const x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+            x.type = "test";
+        }
+        function hidePssword(){
+            const x = document.getElementById("password");
+            x.type = "password";
         }
     </script>
 @endsection
