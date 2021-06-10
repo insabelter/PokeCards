@@ -48,7 +48,10 @@ class WikiController extends Controller
             ksort($setsPerSeries[$seriesName]);
         }
 
-        $currentSetCards = Cards::query()->where('setId',$setId)->orderBy('name')->get();
+        $currentSetCards = [];
+        $currentSetCards["Pokémon"] = Cards::query()->where('cardType','Pokémon')->where('setId',$setId)->orderBy('name')->get();
+        $currentSetCards["Trainer"] = Cards::query()->where('cardType','Trainer')->where('setId',$setId)->orderBy('name')->get();
+        $currentSetCards["Energy"] = Cards::query()->where('cardType','Energy')->where('setId',$setId)->orderBy('name')->get();
 
         return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet'));
     }
