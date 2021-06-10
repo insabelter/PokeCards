@@ -43,6 +43,14 @@
             document.getElementById("editableFieldset").disabled = false;
             document.getElementById("startEditing").disabled = true;
         }
+        function showPassword() {
+        const x = document.getElementById("confirmdelete");
+        x.type = "test";
+        }
+        function hidePassword(){
+        const x = document.getElementById("confirmdelete");
+        x.type = "password";
+        }
     </script>
 
     {{-- modal deleteAccount --}}
@@ -58,14 +66,23 @@
                 <div class="modal-body">
                     <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
                         @csrf
-                        <input type="password" class="form-control" name="confirmdelete" placeholder="type in your password to confirm deletion of your account.">
-                        <br/>
-                        <button type="submit" class="btn btn-primary">Delete my account</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <div class="row">
+                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 my-col">
+                                <input id="confirmdelete" type="password" class="form-control" name="confirmdelete" placeholder="type in password to confirm deletion of your account.">
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 my-col">
+                                <button type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePassword()"><img src="https://img.icons8.com/fluent-systems-filled/24/000000/visible.png" alt="eye icon"/></button>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary">Delete my account</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
