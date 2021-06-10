@@ -31,6 +31,11 @@
 
     <br/>
 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#choosePokemon">Choose a Pokémon!</button>
+
+    <br/>
+    <br>
+
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccount">Delete my account</button>
 
     <script type="text/javascript">
@@ -58,6 +63,32 @@
                         <button type="submit" class="btn btn-primary">Delete my account</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- modal choose pokemon --}}
+    <div class="modal fade" id="choosePokemon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Choose your Pokémon!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                            <div class="col-lg-6" style="padding: 15px;">
+                                <p class="card-text">Offered By:</p>
+                                <img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/>
+                                <button class="btn btn-sm btn-primary">choose</button>
+                            </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
 

@@ -52,7 +52,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePssword()">Show Password </button>
+                                <button type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePssword()"><img src="https://img.icons8.com/fluent-systems-filled/24/000000/visible.png" alt="eye icon"/></button>
                             </div>
                         </div>
 
