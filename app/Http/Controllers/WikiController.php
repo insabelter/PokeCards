@@ -16,12 +16,16 @@ class WikiController extends Controller
         return view('pages.wiki.card-search', compact('cards'));
     }
 
-    public function set_explorer(){
+    public function set_explorer($setId){
         $sets = Sets::all();
 
         // all seriesNames are collected in an array
         $seriesNames = [];
+        $currentSet = null;
         foreach ($sets as $set){
+            if($set->setId === $setId){
+                $currentSet = $set;
+            }
             $seriesName = $set->seriesName;
             if(!in_array($seriesName, $seriesNames)){
                 array_push($seriesNames, $seriesName);
@@ -37,8 +41,14 @@ class WikiController extends Controller
             array_push($setsPerSeries[$thisSeries], $set);
         }
 
-        return view('pages.wiki.set-explorer', compact('setsPerSeries'));
+        // cardsPerSet is an array which includes: setId -> array of cards of this set
+
+        $currentSetCards = Cards::all()->where('setId',$setId);
+
+        return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet'));
     }
+
+
 
     public function getSetName($setId){
         return Sets::find($setId)->name;
