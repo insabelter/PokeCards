@@ -41,7 +41,7 @@ class WikiController extends Controller
             array_push($setsPerSeries[$thisSeries], $set);
         }
 
-        // cardsPerSet is an array which includes: setId -> array of cards of this set
+        ksort($setsPerSeries);
 
         $currentSetCards = Cards::all()->where('setId',$setId);
 

@@ -45,6 +45,7 @@
             @if($currentSet != null)
             <div class="container col-md-8 col-lg-9">
                 <h1><img src="{{ $currentSet->setSymbol }}" alt="setSymbol" height="36px"> {{ $currentSet->setName }}</h1>
+                <h3>Release: {{ $currentSet->releaseDate }}</h3>
                 <div class="row">
                     @foreach($currentSetCards as $card)
                         <div class="col-lg-3 col-md-4 col-sm-6" style="padding: 0;">
