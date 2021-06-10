@@ -20,7 +20,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="accordion col-md-4 col-lg-3" id="accordion1">
+            <div class="accordion col-md-4 col-lg-3" id="accordion1" style="margin-bottom: 15px;">
                 <div class="card" id="seriesContainer">
                     @foreach($setsPerSeries as $seriesName => $setArray)
                         <div class="card-header" id="heading{{str_replace([" ","&"],["","And"],$seriesName)}}" style="padding: 0;">
