@@ -29,8 +29,14 @@
                                     <a class="dropdown-item" href="{{ route('offers') }}">Your Offers</a>
                                 </div>
                             </li>
-                            <li class="btn btn-primary btn-sm nav-button">
-                                <a class="nav-link" href="{{ route('wiki') }}" aria-selected="false">Wiki</a>
+                            <li class="btn btn-primary btn-sm nav-button dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Wiki
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('card-search') }}">Card Search</a>
+                                    <a class="dropdown-item" href="{{ route('set-explorer-sets', 'x') }}">Set Explorer</a>
+                                </div>
                             </li>
                             <li class="btn btn-primary btn-sm nav-button">
                                 <a class="nav-link" href="{{ route('grading') }}" aria-selected="false">Grading</a>
@@ -76,7 +82,9 @@
                 @yield("content")
             </main>
             <footer class="footer">
-                By Insa Belter, Neelis Rüter and Noah Wagner
+                <a href="{{ route('about') }}" style="margin-right: 30px;">{{ __('About') }}</a>
+                <a href="{{ route('privacy') }}">{{ __('Privacy') }}</a>
+                <span class="d-none d-sm-inline" style="position: fixed; right: 15px;">By Insa Belter, Neelis Rüter and Noah Wagner</span>
             </footer>
         </div>
     </body>
