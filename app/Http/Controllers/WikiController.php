@@ -38,12 +38,17 @@ class WikiController extends Controller
             if(!key_exists($thisSeries, $setsPerSeries)){
                 $setsPerSeries[$thisSeries] = [];
             }
-            array_push($setsPerSeries[$thisSeries], $set);
+            $setsPerSeries[$thisSeries][$set->setName] = $set;
         }
 
+        // Sort Series Names alphabetically
         ksort($setsPerSeries);
+        // Sort Set Names for each Series alphabetically
+        foreach ($seriesNames as $seriesName){
+            ksort($setsPerSeries[$seriesName]);
+        }
 
-        $currentSetCards = Cards::all()->where('setId',$setId);
+        $currentSetCards = Cards::query()->where('setId',$setId)->orderBy('name')->get();
 
         return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet'));
     }
