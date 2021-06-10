@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cards;
 use App\Models\Sets;
 use Illuminate\Http\Request;
+use function Sodium\add;
 
 class WikiController extends Controller
 {
@@ -15,9 +16,39 @@ class WikiController extends Controller
         return view('pages.wiki.card-search', compact('cards'));
     }
 
-    public function set_explorer(){
-        return view('pages.wiki.set-explorer');
+    public function set_explorer($setId){
+        $sets = Sets::all();
+
+        // all seriesNames are collected in an array
+        $seriesNames = [];
+        $currentSet = null;
+        foreach ($sets as $set){
+            if($set->setId === $setId){
+                $currentSet = $set;
+            }
+            $seriesName = $set->seriesName;
+            if(!in_array($seriesName, $seriesNames)){
+                array_push($seriesNames, $seriesName);
+            }
+        }
+        // setsPerSeries is an array which includes: seriesName -> array of sets of this series
+        $setsPerSeries = [];
+        foreach ($sets as $set){
+            $thisSeries = $set->seriesName;
+            if(!key_exists($thisSeries, $setsPerSeries)){
+                $setsPerSeries[$thisSeries] = [];
+            }
+            array_push($setsPerSeries[$thisSeries], $set);
+        }
+
+        // cardsPerSet is an array which includes: setId -> array of cards of this set
+
+        $currentSetCards = Cards::all()->where('setId',$setId);
+
+        return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet'));
     }
+
+
 
     public function getSetName($setId){
         return Sets::find($setId)->name;
