@@ -7,12 +7,12 @@
 
 {{--    Special CSS Style --}}
     <style type="text/css">
-        .btn:focus, .btn.focus, .btn.active {
+        #accordion1 .btn:focus, .btn.focus, .btn.active {
             background-color: var(--primary);
             color: white;
             text-decoration: none;
         }
-        .list-group-item-action:hover, .list-group-item-action:focus {
+        #accordion1 .list-group-item-action:hover, .list-group-item-action:focus {
             background-color: var(--primary);
             color: white;
         }
@@ -20,7 +20,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="accordion col-md-4 col-lg-3" id="accordionExample">
+            <div class="accordion col-md-4 col-lg-3" id="accordion1" style="margin-bottom: 15px;">
                 <div class="card" id="seriesContainer">
                     @foreach($setsPerSeries as $seriesName => $setArray)
                         <div class="card-header" id="heading{{str_replace([" ","&"],["","And"],$seriesName)}}" style="padding: 0;">
@@ -31,7 +31,7 @@
                                 </button>
                             </h2>
                         </div>
-                        <div id="collapse{{str_replace([" ","&"],["","And"],$seriesName)}}" class="collapse" aria-labelledby="heading{{str_replace([" ","&"],["","And"],$seriesName)}}" data-parent="#accordionExample">
+                        <div id="collapse{{str_replace([" ","&"],["","And"],$seriesName)}}" class="collapse" aria-labelledby="heading{{str_replace([" ","&"],["","And"],$seriesName)}}" data-parent="#accordion1">
                             <div class="list-group">
                                 @foreach($setArray as $set)
                                     <a href="{{route('set-explorer-sets',['setId' => $set->setId])}}" class="list-group-item list-group-item-action" aria-current="true" style="padding: 6px 10px;">{{ $set->setName }}</a>
@@ -45,20 +45,31 @@
             @if($currentSet != null)
             <div class="container col-md-8 col-lg-9">
                 <h1><img src="{{ $currentSet->setSymbol }}" alt="setSymbol" height="36px"> {{ $currentSet->setName }}</h1>
-                <div class="row">
-                    @foreach($currentSetCards as $card)
-                        <div class="col-lg-3 col-md-4 col-sm-6" style="padding: 0;">
-                            <div class="card" style="margin: 10px;">
-                                <img src="{{$card->smallImage}}" alt="{{$card->name}}">
+                <h4>Release: {{ $currentSet->releaseDate }}</h4>
+
+                <div class="accordion" id="accordion2">
+                    <div class="card" id="seriesContainer">
+                        @foreach($currentSetCards as $type => $array)
+                            @if(sizeof($currentSetCards[$type])>0)
+                            <div class="card-header" id="heading{{$type}}" style="padding: 0;">
+                                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{$type}}" aria-expanded="true" aria-controls="collapse{{$type}}"
+                                        style="padding: 6px 10px;">
+                                    <h2 style="margin: 0;">{{ $type }} Cards</h2>
+                                </button>
                             </div>
-                        </div>
-                    @endforeach
+                            <div id="collapse{{$type}}" class="collapse show" aria-labelledby="heading{{$type}}" data-parent="#accordion2">
+                                <x-set-explorer-cards :cardArray="$currentSetCards[$type]">
+                                </x-set-explorer-cards>
+                            </div>
+                            @endif
+                        @endforeach
+                    </div>
                 </div>
+
             </div>
             @endif
 
         </div>
     </div>
-
 
 @endsection
