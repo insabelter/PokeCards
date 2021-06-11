@@ -66,7 +66,7 @@
 <script>
     function showPassword() {
         const x = document.getElementById("password");
-        x.type = "test";
+        x.type = "text";
     }
     function hidePassword(){
         const x = document.getElementById("password");
