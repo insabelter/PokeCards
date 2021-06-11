@@ -57,7 +57,7 @@
                                     <h2 style="margin: 0;">{{ $type }} Cards</h2>
                                 </button>
                             </div>
-                            <div id="collapse{{$type}}" class="collapse show" aria-labelledby="heading{{$type}}" data-parent="#accordion2">
+                            <div id="collapse{{$type}}" class="collapse show" aria-labelledby="heading{{$type}}">
                                 <x-set-explorer-cards :cardArray="$currentSetCards[$type]">
                                 </x-set-explorer-cards>
                             </div>
