@@ -51,9 +51,6 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-primary" onmousedown="showPassword()" onmouseup="hidePassword()"><img src="https://img.icons8.com/fluent-systems-filled/24/000000/visible.png" alt="eye icon"/></button>
-                            </div>
                         </div>
 
                         <div class="form-group row">
@@ -61,9 +58,6 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                            <div class="col-md-2">
-                                <button id="passwordconfirm" type="button" class="btn btn-primary" onclick="showMyPassword()"><img src="https://img.icons8.com/windows/24/000000/eye-unchecked.png" alt="show password"/></button>
                             </div>
                         </div>
 
@@ -80,28 +74,4 @@
         </div>
     </div>
 </div>
-
-    <script>
-        function showPassword() {
-            const x = document.getElementById("password");
-            x.type = "test";
-        }
-        function hidePassword(){
-            const x = document.getElementById("password");
-            x.type = "password";
-            $test
-        }
-        function showMyPassword(){
-            const x = document.getElementById("passwordconfirm");
-            const y = document.getElementById("password");
-            if(y.type === "password"){
-                y.type = "text";
-                x.innerHTML = '<img src="https://img.icons8.com/windows/24/000000/eye-checked.png" alt="show password"/>';
-            }
-            else if(y.type === "text"){
-                y.type = "password";
-                x.innerHTML = '<img src="https://img.icons8.com/windows/24/000000/eye-unchecked.png" alt="hide password"/>';
-            }
-        }
-    </script>
 @endsection
