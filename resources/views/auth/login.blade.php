@@ -26,10 +26,11 @@
                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
 
                 @error('password')
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
                 @enderror
+            </div>
+            <div class="col-md-2">
+                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="https://img.icons8.com/windows/24/000000/eye-unchecked.png" alt="show password"/></button>
             </div>
         </div>
 
@@ -60,4 +61,19 @@
         </div>
     </form>
 </x-login-window>
+
+<script>
+    function showPassword(){
+        const x = document.getElementById("show-button");
+        const y = document.getElementById("password");
+        if(y.type === "password"){
+            y.type = "text";
+            x.innerHTML = '<img src="https://img.icons8.com/windows/24/000000/eye-checked.png" alt="show password"/>';
+        }
+        else if(y.type === "text"){
+            y.type = "password";
+            x.innerHTML = '<img src="https://img.icons8.com/windows/24/000000/eye-unchecked.png" alt="hide password"/>';
+        }
+    }
+</script>
 @endsection

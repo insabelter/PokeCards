@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cards;
 use App\Models\Sets;
-use Illuminate\Http\Request;
-use function Sodium\add;
 
 class WikiController extends Controller
 {
@@ -38,12 +36,20 @@ class WikiController extends Controller
             if(!key_exists($thisSeries, $setsPerSeries)){
                 $setsPerSeries[$thisSeries] = [];
             }
-            array_push($setsPerSeries[$thisSeries], $set);
+            $setsPerSeries[$thisSeries][$set->setName] = $set;
         }
 
-        // cardsPerSet is an array which includes: setId -> array of cards of this set
+        // Sort Series Names alphabetically
+        ksort($setsPerSeries);
+        // Sort Set Names for each Series alphabetically
+        foreach ($seriesNames as $seriesName){
+            ksort($setsPerSeries[$seriesName]);
+        }
 
-        $currentSetCards = Cards::all()->where('setId',$setId);
+        $currentSetCards = [];
+        $currentSetCards["Pokémon"] = Cards::query()->where('cardType','Pokémon')->where('setId',$setId)->orderBy('name')->get();
+        $currentSetCards["Trainer"] = Cards::query()->where('cardType','Trainer')->where('setId',$setId)->orderBy('name')->get();
+        $currentSetCards["Energy"] = Cards::query()->where('cardType','Energy')->where('setId',$setId)->orderBy('name')->get();
 
         return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet'));
     }
