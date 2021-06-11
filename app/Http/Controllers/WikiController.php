@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cards;
 use App\Models\Sets;
-use Illuminate\Http\Request;
-use function Sodium\add;
 
 class WikiController extends Controller
 {
