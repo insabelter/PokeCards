@@ -3,6 +3,22 @@
 @section('title', 'Profile')
 
 @section('content')
+
+    <button class="btn btn-icon" data-toggle="modal" data-target="#choosePokemon"><img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
+
+
+    <li class="btn btn-icon">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{{ route('card-search') }}">Bullbasaur <img src="https://img.icons8.com/color/24/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
+            </a>
+            <a class="dropdown-item" href="{{ route('set-explorer-sets', 'x') }}">Charmander <img src="https://img.icons8.com/color/24/000000/charmander.png" alt="bullbasaur icon"/></button>
+            </a>
+        </div>
+    </li>
+
     <h1>Profile</h1>
 
     <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()">Edit Information</button>
@@ -22,19 +38,19 @@
                 <input type="email" class="form-control" id="email" name="email" value={{ Auth::user()->email }}>
             </div>
             <div class="form-group">
-                <label for="telefonID">Telefon:</label>
-                <input type="text" class="form-control" id="telefonID" name="telefon" value="+01 23456789">
+                <label for="verified">Verified:</label>
+                @if(\Illuminate\Support\Facades\Auth::user()->email_verified_at == null)
+                    <button type="button" class="btn btn-primary">Verify my account</button>
+                @else
+                    <img src="https://img.icons8.com/color/32/000000/verified-badge.png"/>
+                    <label for="verified">on {{Auth::user()->email_verified_at}} </label>
+                @endif
             </div>
             <button type="submit" class="btn btn-primary">Update Information</button>
         </fieldset>
     </form>
 
     <br/>
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#choosePokemon">Choose a Pokémon!</button>
-
-    <br/>
-    <br>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccount">Delete my account</button>
 
