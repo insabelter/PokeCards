@@ -2,7 +2,15 @@
 <html>
     <head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-813PWM0KEY"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
+            gtag('config', 'G-813PWM0KEY');
+        </script>
         <title>Pok&eacute;Cards @yield('title')</title>
 
         <script src="{{asset('js/app.js')}}" defer></script>
