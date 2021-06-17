@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <button class="btn btn-icon" data-toggle="modal" data-target="#choosePokemon"><img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
+    <button class="btn btn-icon" data-toggle="modal" data-target="#choosePokemon"><img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
 
 
     <li class="btn btn-icon">
@@ -42,7 +42,7 @@
                 @if(\Illuminate\Support\Facades\Auth::user()->email_verified_at == null)
                     <button type="button" class="btn btn-primary">Verify my account</button>
                 @else
-                    <img src="https://img.icons8.com/color/32/000000/verified-badge.png"/>
+                    <img src="https://img.icons8.com/color/32/000000/verified-badge.png" alt="verified badge"/>
                     <label for="verified">on {{Auth::user()->email_verified_at}} </label>
                 @endif
             </div>

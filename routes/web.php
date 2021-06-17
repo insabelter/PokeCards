@@ -53,6 +53,10 @@ Route::get('profile', [ProfileController::class,'index']) -> name("profile");
 Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit');
 Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
+//Admin
+Route::get('admin',function () {
+    return view('pages.account.admin');
+})->name('admin');
 
 Auth::routes();
 
