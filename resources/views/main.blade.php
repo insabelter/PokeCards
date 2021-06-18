@@ -2,7 +2,15 @@
 <html>
     <head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-813PWM0KEY"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
+            gtag('config', 'G-813PWM0KEY');
+        </script>
         <title>Pok&eacute;Cards @yield('title')</title>
 
         <script src="{{asset('js/app.js')}}" defer></script>
@@ -35,7 +43,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="{{ route('card-search') }}">Card Search</a>
-                                    <a class="dropdown-item" href="{{ route('set-explorer') }}">Set Explorer</a>
+                                    <a class="dropdown-item" href="{{ route('set-explorer-sets', 'x') }}">Set Explorer</a>
                                 </div>
                             </li>
                             <li class="btn btn-primary btn-sm nav-button">
@@ -62,6 +70,9 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('profile') }}">Edit Profile</a>
+                                        @if(\Illuminate\Support\Facades\Auth::user()->is_admin == true)
+                                            <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
+                                        @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

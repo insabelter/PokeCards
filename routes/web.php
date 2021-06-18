@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,8 @@ Route::post('offers', [TradingController::class,'newOffer']);
 
 // wiki -----------------------------------
 Route::get('card-search', [WikiController::class,'card_search']) -> name("card-search");
-Route::get('set-explorer', [WikiController::class,'set_explorer']) -> name("set-explorer");
+//Route::get('set-explorer', [WikiController::class,'set_explorer']) -> name("set-explorer");
+Route::get('set-explorer/{setId}', [WikiController::class,'set_explorer']) -> name("set-explorer-sets");
 
 // Grading -----------------------------------
 Route::get('grading', function () {
@@ -53,3 +55,9 @@ Route::get('verficationMail', [ProfileController::class,'sendVarificationMail'])
 Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit');
 Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
+//Admin
+Route::get('admin', [AdminController::class,'index']) -> name("admin");
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -52,13 +52,15 @@ class ProfileController extends Controller
             'confirmdelete' => 'required'
         ]);
 
-        if($request->confirmdelete == "DELETE"){
-            $user =  auth()->user();
+        $user =  auth()->user();
+
+        if(Hash::check($request->confirmdelete, $user->password)){
             $user->delete();
 
             return redirect('/');
         }
 
+        //sinnvolle Fehlermeldung bzw. andere Seite
         return redirect('/grading');
 
     }

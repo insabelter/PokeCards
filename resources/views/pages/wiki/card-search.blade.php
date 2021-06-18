@@ -27,6 +27,7 @@
         </tr>
         </thead>
         <tbody>
+
         @if(isset($_GET['pokemonname']))
             @foreach($cards as $card)
                 @if(str_contains(strtolower($card->name),strtolower($_GET['pokemonname'])) && $_GET['pokemonname']!="" && $_GET['pokemonname']!=" ")
