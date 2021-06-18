@@ -4,9 +4,6 @@
 
 @section('content')
 
-    <button class="btn btn-icon" data-toggle="modal" data-target="#choosePokemon"><img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
-
-
     <li class="btn btn-icon">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/>
@@ -42,7 +39,7 @@
                 @if(\Illuminate\Support\Facades\Auth::user()->email_verified_at == null)
                     <button type="button" class="btn btn-primary">Verify my account</button>
                 @else
-                    <img src="https://img.icons8.com/color/32/000000/verified-badge.png" alt="verified badge"/>
+                    <img src="icons/verified-badge.png" alt="verified badge"/>
                     <label for="verified">on {{Auth::user()->email_verified_at}} </label>
                 @endif
             </div>
@@ -64,11 +61,11 @@
             const y = document.getElementById("password");
             if(y.type === "password"){
                 y.type = "text";
-                x.innerHTML = '<img src="https://img.icons8.com/windows/24/000000/eye-checked.png" alt="show password"/>';
+                x.innerHTML = '<img src="icons/eye-checked.png" alt="show password"/>';
             }
             else if(y.type === "text"){
                 y.type = "password";
-                x.innerHTML = '<img src="https://img.icons8.com/windows/24/000000/eye-unchecked.png" alt="hide password"/>';
+                x.innerHTML = '<img src="icons/eye-unchecked.png" alt="hide password"/>';
             }
         }
     </script>
@@ -91,7 +88,7 @@
                                 <input id="password" type="password" class="form-control" name="confirmdelete" placeholder="type in password to confirm deletion of your account.">
                             </div>
                             <div class="col-md-2">
-                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="https://img.icons8.com/windows/24/000000/eye-unchecked.png" alt="show password"/></button>
+                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="icons/eye-unchecked.png" alt="show password"/></button>
                             </div>
                             <br/>
                             <br/>

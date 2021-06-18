@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -54,9 +55,7 @@ Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit'
 Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
 //Admin
-Route::get('admin',function () {
-    return view('pages.account.admin');
-})->name('admin');
+Route::get('admin', [AdminController::class,'index']) -> name("admin");
 
 Auth::routes();
 
