@@ -19,15 +19,6 @@
 
     <h1>Profile</h1>
 
-{{--    <button type="button" class="btn btn-sm btn-primary" onclick="{{$profile::sendVarificationMail()}}">Send Varification Mail</button>--}}
-    <form action="{{route('verficationMail')}}" method="get" style="margin: 15px 0;">
-        <h4 style="margin-bottom: 15px; display: inline-block; margin-right: 15px;">({{$verified_text}})</h4>
-        @if(!$verified)
-            <button type="submit" class="btn btn-primary btn-sm" style="display: inline-block;">Send New Varification Mail</button>
-        @endif
-    </form>
-
-
     <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()">Edit Information</button>
     <form action="{{route('edit', Auth::user()->id)}}"  method="post">
         @csrf
@@ -44,20 +35,22 @@
                 <label for="email">E-Mail:</label>
                 <input type="email" class="form-control" id="email" name="email" value={{ Auth::user()->email }}>
             </div>
-            <div class="form-group">
-                <label for="verified">Verified:</label>
-                @if(\Illuminate\Support\Facades\Auth::user()->email_verified_at == null)
-                    <button type="button" class="btn btn-primary">Verify my account</button>
-                @else
-                    <img src="icons/verified-badge.png" alt="verified badge"/>
-                    <label for="verified">on {{Auth::user()->email_verified_at}} </label>
-                @endif
-            </div>
             <button type="submit" class="btn btn-primary">Update Information</button>
         </fieldset>
     </form>
 
-    <br/>
+    <div style="margin: 15px 0;">
+        @if(!$verified)
+            <form action="{{route('verficationMail')}}" method="get" style="margin: 15px 0;">
+                <button type="submit" class="btn btn-primary" style="display: inline-block;">Verify my account</button>
+            </form>
+        @else
+            <label for="verified">Verified:</label>
+            <img src="icons/verified-badge.png" alt="verified badge"/>
+            <label for="verified">on {{Auth::user()->email_verified_at}} </label>
+            <br>
+        @endif
+    </div>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccount">Delete my account</button>
 
