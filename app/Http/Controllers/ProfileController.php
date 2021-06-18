@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function index() {
-        return view('pages.account.profile');
+        $user = auth()->user();
+        $verified = $user->hasVerifiedEmail();
+        $verified_text = "Not verified";
+        if($verified){
+            $verified_text = "Verified";
+        }
+        return view('pages.account.profile', compact('verified','verified_text'));
     }
 
     public function edit(Request $request) {
@@ -56,5 +63,10 @@ class ProfileController extends Controller
         //sinnvolle Fehlermeldung bzw. andere Seite
         return redirect('/grading');
 
+    }
+
+    public function sendVarificationMail(){
+        auth()->user()->sendEmailVerificationNotification();
+        return redirect('/profile');
     }
 }

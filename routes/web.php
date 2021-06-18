@@ -51,6 +51,7 @@ Auth::routes(['verify' => true]);
 
 //Profile
 Route::get('profile', [ProfileController::class,'index']) -> name("profile");
+Route::get('verficationMail', [ProfileController::class,'sendVarificationMail']) -> name("verficationMail");
 Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit');
 Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 
