@@ -17,6 +17,7 @@ class CreateOffersTable extends Migration
             $table->id("offersId");
             $table->string("cardId");
             $table->text("description");
+            $table->int("grade")->nullable();
             $table->unsignedBigInteger("userId");
         });
     }
