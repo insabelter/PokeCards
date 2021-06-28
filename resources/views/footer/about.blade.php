@@ -11,6 +11,9 @@
     <p>
         The card data is gathered from the <a href="https://pokemontcg.io/">Pokémon TCG Developers API</a>.
     </p>
+    <p>
+        The icons are provided by  <a href="https://icons8.com/">Icons8</a>.
+    </p>
 
     <h2>Contact</h2>
     <p>
