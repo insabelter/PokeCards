@@ -14,7 +14,8 @@ class Offers extends Model
     protected $fillable=[
         'cardId',
         'description',
-        'userId'
+        'userId',
+        'grade'
     ];
 
 }
