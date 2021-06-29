@@ -14,20 +14,24 @@
                     <form method="post" action="/offers">
                         @csrf
                         <div class="form-group">
-                            <label for="cardnameID">Card Name:</label>
-                            <input type="text" class="form-control" id="cardnameID" name="cardname" placeholder="Name">
+                            <label for="cardidID">Card Id:</label>
+                            <input type="text" class="form-control" id="cardidID" name="cardid" placeholder="ID" value="base1-100">
                         </div>
                         <div class="form-group">
-                            <label for="setID">Set:</label>
-                            <input type="text" class="form-control" id="setID" name="set" placeholder="Set">
+                            <label for="descriptionID">Description:</label>
+                            <textarea type="text" class="form-control" id="descriptionID" name="description" placeholder="Description" style="resize: none; height: 150px;"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="priceID">Price:</label>
-                            <input type="text" class="form-control" id="priceID" name="price" placeholder="Price">
+                            <input type="number" step="0.01" class="form-control" id="priceID" name="price" placeholder="Price">
                         </div>
                         <div class="form-group">
-                            <label for="imageID">Image URL:</label>
-                            <input type="text" class="form-control" id="imageID" name="image" placeholder="Image URL">
+                            <label for="verhandelbarID">Verhandelbar:</label>
+                            <input type="checkbox" id="verhandelbarID" name="verhandelbar" style="margin-right: 10px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="gradeID">Grade:</label>
+                            <input type="number" class="form-control" id="gradeID" name="grade" min="0" max="10" oninput="validity.valid||(value='');">
                         </div>
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
