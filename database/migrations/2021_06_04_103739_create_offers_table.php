@@ -18,6 +18,8 @@ class CreateOffersTable extends Migration
             $table->string("cardId");
             $table->text("description");
             $table->int("grade")->nullable();
+            $table->float("preis");
+            $table->boolean("verhandelbar");
             $table->unsignedBigInteger("userId");
         });
     }

@@ -15,7 +15,9 @@ class Offers extends Model
         'cardId',
         'description',
         'userId',
-        'grade'
+        'grade',
+        'preis',
+        'verhandelbar'
     ];
 
 }
