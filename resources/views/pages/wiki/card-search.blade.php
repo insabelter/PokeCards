@@ -23,7 +23,8 @@
             <th scope="col" style="width: 25%;">Name</th>
             <th scope="col" style="width: 25%;">Card Type</th>
 {{--                    Only shown if screen larger than very small--}}
-            <th scope="col" class="d-none d-sm-table-cell" style="width: 25%;">Image</th>
+            <th scope="col" class="d-none d-sm-table-cell" style="width: 12.5%;">Image</th>
+            <th scope="col" class="d-none d-sm-table-cell" style="width: 12.5%;">Offer</th>
         </tr>
         </thead>
         <tbody>
@@ -37,14 +38,24 @@
                             Show Image
                         </button>
                     </td>
-                    <td>{{ $card->name }}
+                    <td>{{ $card->name }}</td>
+                    <td>{{ $card->cardtype }} <br>
+                        <form action="/offers">
+                            @csrf
+                            <a class="btn btn-primary d-sm-none" style="margin-top: 5px;" href="{{ route('offers',$card->id) }}">Create Offer</a>
+                        </form>
                     </td>
-                    <td>{{ $card->cardtype }}</td>
 {{--                    Only shown if screen larger than very small--}}
                     <td id="accordion{{$card->id}}" class="d-none d-sm-table-cell">
                         <button class="btn btn-primary" data-toggle="collapse" data-target="#collapse{{$card->id}}" aria-expanded="false" aria-controls="collapse{{$card->id}}" onclick="toggleText(this,'Show')">
                             Show
                         </button>
+                    </td>
+                    <td class="d-none d-sm-table-cell">
+                        <form action="/offers">
+                            @csrf
+                            <a class="btn btn-primary" href="{{ route('offers',$card->id) }}">Create Offer</a>
+                        </form>
                     </td>
                 </tr>
                 <tr>

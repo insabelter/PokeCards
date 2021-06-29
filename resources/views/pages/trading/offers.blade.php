@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="priceID">Price:</label>
-                            <input type="number" required step="0.01" class="form-control" id="priceID" name="price" placeholder="Price">
+                            <input type="number" required step="0.01" min="0" class="form-control" id="priceID" name="price" placeholder="Price">
                         </div>
                         <div class="form-group">
                             <label for="verhandelbarID">Verhandelbar:</label>
