@@ -9,9 +9,9 @@
                         <h4 class="card-title font-weight-bold">{{$offer->name}}</h4>
                         <h5 class="card-title">Card Type: {{$offer->cardtype}}</h5>
                         <h6 class="card-subtitle mb-2 text-primary font-weight-bold">Price: ${{$offer->price}} - {{$offer->verhandelbar}}</h6>
-                        @IF(isset($offer->grade))
-                            <h6 class="card-subtitle mb-2">Grading: {{$offer->grade}}</h6>
-                        @ENDIF
+                        @if(isset($offer->grade))
+                            <h6 class="card-subtitle mb-2 font-weight-bold">Grading: {{$offer->grade}}</h6>
+                        @endif
                         <p>{{$offer->description}}</p>
                         {{ $slot }}
                     </div>

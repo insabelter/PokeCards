@@ -15,7 +15,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="cardidID">Card Id:</label>
-                            <input type="text" class="form-control" id="cardidID" name="cardid" placeholder="ID" value="base1-100">
+                            <input type="text" required class="form-control" id="cardidID" name="cardid" placeholder="ID" value="{{$cardId}}">
                         </div>
                         <div class="form-group">
                             <label for="descriptionID">Description:</label>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="priceID">Price:</label>
-                            <input type="number" step="0.01" class="form-control" id="priceID" name="price" placeholder="Price">
+                            <input type="number" required step="0.01" class="form-control" id="priceID" name="price" placeholder="Price">
                         </div>
                         <div class="form-group">
                             <label for="verhandelbarID">Verhandelbar:</label>
@@ -49,7 +49,13 @@
             <div class="row">
                 @foreach($offerArray as $offer)
                     <div class="col-lg-6" style="padding: 15px;">
-                        <x-offer-card :offer="$offer"/>
+                        <x-offer-card :offer="$offer">
+                            <form method="post" action="/offers/delete">
+                                @csrf
+                                <input type="hidden" name="offerId" value="{{$offer->id}}">
+                                <button type="submit" class="btn btn-primary btn-small">Delete Offer</button>
+                            </form>
+                        </x-offer-card>
                     </div>
                 @endforeach
             </div>

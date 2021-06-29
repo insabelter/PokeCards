@@ -25,12 +25,14 @@ class TradingController extends Controller
         return view('pages.trading.watchlist', compact('offerArray'));
     }
 
-    public function offers(){
+    public function offers($cardId){
         $offers = Offers::query()->where('userId',Auth::id())->get();
 
         $offerArray = $this->toDisplayOffer($offers);
-
-        return view('pages.trading.offers', compact('offerArray'));
+        if($cardId == "x"){
+            $cardId = "";
+        }
+        return view('pages.trading.offers', compact('offerArray','cardId'));
     }
 
     public function newOffer(Request $request) {
@@ -44,7 +46,13 @@ class TradingController extends Controller
         $offer->verhandelbar = isset($request->verhandelbar);
         $offer->save();
 
-        return redirect('offers') -> with("msg","New Offer created!");
+        return redirect('offers/x') -> with("msg","New Offer created!");
+    }
+
+    public function deleteOffer(Request $request){
+        Offers::query()->where('offerId',$request->offerId)->delete();
+
+        return redirect() -> route('offers','x');
     }
 
     private function toDisplayOffer($offers){
@@ -53,7 +61,7 @@ class TradingController extends Controller
             $card = Cards::query()->where('id',$offer->cardId)->get()[0];
             $user = User::query()->where('id',$offer->userId)->get()[0];
             $newOffer = (object)array(
-                "id" => $offer->offerid,
+                "id" => $offer->offerId,
                 "user" => $user->name,
                 "image" => $card->largeImage,
                 "name" => $card->name,
