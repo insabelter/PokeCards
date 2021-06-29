@@ -42,9 +42,20 @@ Route::get('card-search', [WikiController::class,'card_search']) -> name("card-s
 Route::get('set-explorer/{setId}', [WikiController::class,'set_explorer']) -> name("set-explorer-sets");
 
 // Grading -----------------------------------
-Route::get('grading', function () {
-    return view('pages.grading');
-})->name('grading');
+Route::get('guide', function () {
+    return view('pages.grading.guide');
+})->name('guide');
+
+Route::get('psa', function () {
+    return view('pages.grading.psa');
+})->name('psa');
+
+Route::get('egs', function () {
+    return view('pages.grading.egs');
+})->name('egs');
+
+
+
 
 //All routes that are important for the authentication are generated
 Auth::routes();
