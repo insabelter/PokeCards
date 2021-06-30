@@ -52,14 +52,16 @@
         @endif
     </div>
 
+    <img src="{{asset('images/SadPikachu.png')}}" alt="Sad Pikachu Image" class="col-12 col-md-6" style="padding: 0; border-radius: 0.25rem;">
+
     <div style="margin: 15px 0;">
         <label for="status">Status:</label>
         @if($user->is_admin)
-            <img src="{{asset('icons/ultraball.png')}}" alt="pokeball"/>
+            <img src="{{asset('icons/ultraball.png')}}" alt="pokeball">
         @elseif($verified)
-            <img src="{{asset('icons/superball.png')}}" alt="superball"/>
+            <img src="{{asset('icons/superball.png')}}" alt="superball">
         @else
-            <img src="{{asset('icons/pokeball.png')}}" alt="superball"/>
+            <img src="{{asset('icons/pokeball.png')}}" alt="superball">
         @endif
     </div>
 
