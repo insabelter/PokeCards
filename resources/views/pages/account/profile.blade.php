@@ -10,7 +10,7 @@
             <img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/>
         </a>
         <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{{ route('card-search') }}">Bullbasaur <img src="https://img.icons8.com/color/24/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
+            <a class="dropdown-item" href="{{ route('card-search') }}">Bullbasaur <img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
             </a>
             <a class="dropdown-item" href="{{ route('set-explorer-sets', 'x') }}">Charmander <img src="https://img.icons8.com/color/24/000000/charmander.png" alt="bullbasaur icon"/></button>
             </a>
@@ -29,7 +29,7 @@
         <fieldset id="editableFieldset" disabled>
             <div class="form-group">
                 <label for="passwordID">Password:</label>
-                <input type="password" class="form-control" id="passwordID" name="password" value="Password">
+                <button type="submit" class="btn btn-primary">Change my password</button>
             </div>
             <div class="form-group">
                 <label for="email">E-Mail:</label>
