@@ -10,7 +10,7 @@
             <img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/>
         </a>
         <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{{ route('card-search') }}">Bullbasaur <img src="https://img.icons8.com/color/24/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
+            <a class="dropdown-item" href="{{ route('card-search') }}">Bullbasaur <img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
             </a>
             <a class="dropdown-item" href="{{ route('set-explorer-sets', 'x') }}">Charmander <img src="https://img.icons8.com/color/24/000000/charmander.png" alt="bullbasaur icon"/></button>
             </a>
@@ -29,7 +29,7 @@
         <fieldset id="editableFieldset" disabled>
             <div class="form-group">
                 <label for="passwordID">Password:</label>
-                <input type="password" class="form-control" id="passwordID" name="password" value="Password">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePassword">Change my password</button>
             </div>
             <div class="form-group">
                 <label for="email">E-Mail:</label>
@@ -46,9 +46,20 @@
             </form>
         @else
             <label for="verified">Verified:</label>
-            <img src="icons/verified-badge.png" alt="verified badge"/>
+            <img src="{{asset('icons/verified-badge.png')}}" alt="verified badge"/>
             <label for="verified">on {{Auth::user()->email_verified_at}} </label>
             <br>
+        @endif
+    </div>
+
+    <div style="margin: 15px 0;">
+        <label for="status">Status:</label>
+        @if($user->is_admin)
+            <img src="{{asset('icons/ultraball.png')}}" alt="pokeball"/>
+        @elseif($verified)
+            <img src="{{asset('icons/superball.png')}}" alt="superball"/>
+        @else
+            <img src="{{asset('icons/pokeball.png')}}" alt="superball"/>
         @endif
     </div>
 
@@ -64,11 +75,11 @@
             const y = document.getElementById("password");
             if(y.type === "password"){
                 y.type = "text";
-                x.innerHTML = '<img src="icons/eye-checked.png" alt="show password"/>';
+                x.innerHTML = '<img src="{{asset('icons/eye-checked.png')}}" alt="show password"/>';
             }
             else if(y.type === "text"){
                 y.type = "password";
-                x.innerHTML = '<img src="icons/eye-unchecked.png" alt="hide password"/>';
+                x.innerHTML = '<img src="{{asset('icons/eye-unchecked.png')}}" alt="hide password"/>';
             }
         }
     </script>
@@ -83,6 +94,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
                     <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
                         @csrf
@@ -91,7 +103,7 @@
                                 <input id="password" type="password" class="form-control" name="confirmdelete" placeholder="type in password to confirm deletion of your account.">
                             </div>
                             <div class="col-md-2">
-                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="icons/eye-unchecked.png" alt="show password"/></button>
+                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('icons/eye-unchecked.png')}}" alt="show password"/></button>
                             </div>
                             <br/>
                             <br/>
@@ -101,6 +113,7 @@
                         </div>
                     </form>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
@@ -108,27 +121,72 @@
         </div>
     </div>
 
-    {{-- modal choose pokemon --}}
-    <div class="modal fade" id="choosePokemon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- modal change password --}}
+    <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Choose your Pokémon!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h2>Change your password:</h2>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                            <div class="col-lg-6" style="padding: 15px;">
-                                <p class="card-text">Offered By:</p>
-                                <img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/>
-                                <button class="btn btn-sm btn-primary">choose</button>
-                            </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
 
+                <div class="modal-body">
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
+                        @csrf
+
+                        <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
+                            <label for="new-password">Current Password</label>
+
+                            <div>
+                                <input id="current-password" type="password" class="form-control" name="current-password" required>
+
+                                @if ($errors->has('current-password'))
+                                    <span class="help-block">
+                                            <strong>{{ $errors->first('current-password') }}</strong>
+                                        </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
+                            <label for="new-password">New Password</label>
+
+                            <div>
+                                <input id="new-password" type="password" class="form-control" name="new-password" required>
+
+                                @if ($errors->has('new-password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('new-password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new-password-confirm">Confirm New Password</label>
+
+                            <div>
+                                <input id="new-password-confirm" type="password" class="form-control" name="new-password_confirmation" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary">Change Password</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
