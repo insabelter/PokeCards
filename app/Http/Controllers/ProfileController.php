@@ -15,7 +15,7 @@ class ProfileController extends Controller
         if($verified){
             $verified_text = "Verified";
         }
-        return view('pages.account.profile', compact('verified','verified_text'));
+        return view('pages.account.profile', compact('user','verified','verified_text'));
     }
 
     public function edit(Request $request) {

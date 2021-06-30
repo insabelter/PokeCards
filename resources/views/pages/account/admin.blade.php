@@ -30,7 +30,7 @@
         </thead>
         <tbody>
 
-        @if(isset($_GET['username']))
+         @if(isset($_GET['username']))
             @foreach($users as $user)
                 @if(str_contains(strtolower($user->name),strtolower($_GET['username'])) && $_GET['username']!="" && $_GET['username']!=" ")
                     <tr>
@@ -59,19 +59,54 @@
                     </tr>
                 @endif
             @endforeach
-        @else
-            @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->name }} <br>
-                        </td>
-                        <td>{{ $user->email }}
-                        </td>
-                        <td>{{ $user->email_verified_at }}</td>
-                    </tr>
-            @endforeach
-        @endif
+         @else
+             @foreach($users as $user)
+                 <tr>
+                     <td>{{ $user->name }} <br>
+                     </td>
+                     <td>{{ $user->email }}
+                     </td>
+                     <td>{{ $user->email_verified_at }}</td>
+                     @if($user->is_admin == 1)
+                         <td>yes</td>
+                     @else
+                         <td>no</td>
+                     @endif
+                     <td class="d-none d-sm-table-cell">
+                         <form action="">
+                             @csrf
+                             <a class="btn btn-primary" href="">Make Admin</a>
+                         </form>
+                     </td>
+                     <td class="d-none d-sm-table-cell">
+                         <form action="">
+                             @csrf
+                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Delete user</button>
+                         </form>
+                     </td>
+                 </tr>
+             @endforeach
+         @endif
         </tbody>
     </table>
+
+    {{-- modal confirm deletion --}}
+    <div class="modal fade" id="confirmDeletion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the user {{$user->name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, I'm sure</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection
 

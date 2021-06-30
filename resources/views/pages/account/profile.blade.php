@@ -46,9 +46,20 @@
             </form>
         @else
             <label for="verified">Verified:</label>
-            <img src="icons/verified-badge.png" alt="verified badge"/>
+            <img src="{{asset('icons/verified-badge.png')}}" alt="verified badge"/>
             <label for="verified">on {{Auth::user()->email_verified_at}} </label>
             <br>
+        @endif
+    </div>
+
+    <div style="margin: 15px 0;">
+        <label for="status">Status:</label>
+        @if($user->is_admin)
+            <img src="{{asset('icons/ultraball.png')}}" alt="pokeball"/>
+        @elseif($verified)
+            <img src="{{asset('icons/superball.png')}}" alt="superball"/>
+        @else
+            <img src="{{asset('icons/pokeball.png')}}" alt="superball"/>
         @endif
     </div>
 
@@ -64,11 +75,11 @@
             const y = document.getElementById("password");
             if(y.type === "password"){
                 y.type = "text";
-                x.innerHTML = '<img src="icons/eye-checked.png" alt="show password"/>';
+                x.innerHTML = '<img src="{{asset('icons/eye-checked.png')}}" alt="show password"/>';
             }
             else if(y.type === "text"){
                 y.type = "password";
-                x.innerHTML = '<img src="icons/eye-unchecked.png" alt="hide password"/>';
+                x.innerHTML = '<img src="{{asset('icons/eye-unchecked.png')}}" alt="hide password"/>';
             }
         }
     </script>
