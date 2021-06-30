@@ -54,9 +54,6 @@ Route::get('egs', function () {
     return view('pages.grading.egs');
 })->name('egs');
 
-
-
-
 //All routes that are important for the authentication are generated
 Auth::routes();
 
@@ -67,6 +64,7 @@ Route::get('profile', [ProfileController::class,'index']) -> name("profile");
 Route::get('verficationMail', [ProfileController::class,'sendVarificationMail']) -> name("verficationMail");
 Route::post('profile/edit/{id}', [ProfileController::class,'edit'])->name('edit');
 Route::post('/profile/delete/{id}', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
+Route::post('/changePassword', [ProfileController::class,'changePassword'])->name('changePassword');
 
 //Admin
 Route::get('admin', [AdminController::class,'index']) -> name("admin");
