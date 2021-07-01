@@ -46,7 +46,7 @@
             </form>
         @else
             <label for="verified">Verified:</label>
-            <img src="{{asset('/icons/verified-badge.png')}}" alt="{{asset('/icons/verified-badge.png')}}"/>
+            <img src="{{asset('/images/verified-badge.png')}}" alt="verified badge"/>
             <label for="verified">on {{Auth::user()->email_verified_at}} </label>
             <br>
         @endif
