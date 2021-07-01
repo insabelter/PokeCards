@@ -61,11 +61,10 @@
             </form>
         @else
             <label for="verified">Verified:</label>
-            
+
             <img src="{{asset('images/icons/verified-badge.png')}}" alt="verified badge"/>
             <label for="verified">on {{$user->email_verified_at}} </label>
 
-     
             <br>
         @endif
     </div>
@@ -74,16 +73,16 @@
         <label for="status">Status:</label>
         @if($user->is_admin)
             <img src="{{asset('images/icons/ultraball.png')}}" alt="ultraball">
-            Ultraball: You are an administrator of the PokéCards site.
+            Ultraball: You are an administrator of the PokéCards site.<br>
             You have the right to edit and delete users.
         @elseif($verified)
             <img src="{{asset('images/icons/superball.png')}}" alt="superball">
-            Superball: You're a verified member of the PokéCards Community.
+            Superball: You're a verified member of the PokéCards Community.<br>
             That will show up in your offers and so you are more reliable.
         @else
             <img src="{{asset('images/icons/pokeball.png')}}" alt="pokeball">
-            Pokeball: You're a member of the PokéCards Community as you have an account.
-            To get the Superball and become trustworthy please verify your E-Mail adress.
+            Pokeball: You're a member of the PokéCards Community as you have an account.<br>
+            To get the Superball and become trustworthy please verify your E-Mail address.
         @endif
     </div>
 

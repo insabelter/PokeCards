@@ -30,6 +30,7 @@ Route::get('privacy', [FooterController::class,'privacy']) -> name("privacy");
 
 // Trading -----------------------------------
 Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
+Route::post('marketplace/watch', [TradingController::class,'addToWatchlist']);
 Route::get('watchlist', [TradingController::class,'watchlist']) -> name("watchlist");
 Route::get('offers', [TradingController::class,'offers']) -> name("offers");
 Route::get('offers/{cardId}', [TradingController::class,'offers']) -> name("offers");
@@ -38,7 +39,6 @@ Route::post('offers/delete', [TradingController::class,'deleteOffer']);
 
 // wiki -----------------------------------
 Route::get('card-search', [WikiController::class,'card_search']) -> name("card-search");
-//Route::get('set-explorer', [WikiController::class,'set_explorer']) -> name("set-explorer");
 Route::get('set-explorer/{setId}', [WikiController::class,'set_explorer']) -> name("set-explorer-sets");
 
 // Grading -----------------------------------
