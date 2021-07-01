@@ -12,7 +12,7 @@ class TradingController extends Controller
 {
 
     public function marketplace(Request $request){
-        $offers = Offers::All();
+        $offers = Offers::All()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
 
@@ -20,22 +20,44 @@ class TradingController extends Controller
     }
 
     public function watchlist(Request $request){
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
         $offerArray = [];
 
         return view('pages.trading.watchlist', compact('offerArray'));
     }
 
     public function offers($cardId){
-        $offers = Offers::query()->where('userId',Auth::id())->get();
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
+        $cardImage = '';
+        if($cardId !== 'x'){
+            $card = Cards::query()->where('id',$cardId)->get()->first();
+            if(isset($card)){
+                $cardImage = $card->largeImage;
+            }
+            else{
+                $cardId = 'x';
+            }
+        }
+
+        $offers = Offers::query()->where('userId',Auth::id())->get()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
-        if($cardId == "x"){
-            $cardId = "";
-        }
-        return view('pages.trading.offers', compact('offerArray','cardId'));
+        return view('pages.trading.offers', compact('offerArray','cardId','cardImage'));
     }
 
     public function newOffer(Request $request) {
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
 
         $offer = new Offers();
         $offer->cardId = $request->cardid;
@@ -43,13 +65,18 @@ class TradingController extends Controller
         $offer->userId = Auth::id();
         $offer->grade = $request->grade;
         $offer->preis = $request->price;
-        $offer->verhandelbar = isset($request->verhandelbar);
+        $offer->verhandelbar = isset($request->negotiable);
         $offer->save();
 
         return redirect('offers/x') -> with("msg","New Offer created!");
     }
 
     public function deleteOffer(Request $request){
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
         Offers::query()->where('offerId',$request->offerId)->delete();
 
         return redirect() -> route('offers','x');
@@ -68,7 +95,7 @@ class TradingController extends Controller
                 "cardtype" => $card->cardtype,
                 "description" => $offer->description,
                 "price" => $offer->preis,
-                "verhandelbar" => $offer->verhandelbar ? "negotiable" : "not negotiable",
+                "negotiable" => $offer->verhandelbar ? "negotiable" : "not negotiable",
                 "grade" => $offer->grade
             );
             array_push($offerArray,$newOffer);
