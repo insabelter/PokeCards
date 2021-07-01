@@ -61,7 +61,7 @@
             </form>
         @else
             <label for="verified">Verified:</label>
-            <img src="{{asset('icons/verified-badge.png')}}" alt="verified badge"/>
+            <img src="{{asset('images/icons/verified-badge.png')}}" alt="verified badge"/>
             <label for="verified">on {{$user->email_verified_at}} </label>
             <br>
         @endif
@@ -70,11 +70,17 @@
     <div style="margin: 15px 0;">
         <label for="status">Status:</label>
         @if($user->is_admin)
-            <img src="{{asset('icons/ultraball.png')}}" alt="pokeball">
+            <img src="{{asset('images/icons/ultraball.png')}}" alt="ultraball">
+            Ultraball: You are an administrator of the PokéCards site.
+            You have the right to edit and delete users.
         @elseif($verified)
-            <img src="{{asset('icons/superball.png')}}" alt="superball">
+            <img src="{{asset('images/icons/superball.png')}}" alt="superball">
+            Superball: You're a verified member of the PokéCards Community.
+            That will show up in your offers and so you are more reliable.
         @else
-            <img src="{{asset('icons/pokeball.png')}}" alt="superball">
+            <img src="{{asset('images/icons/pokeball.png')}}" alt="pokeball">
+            Pokeball: You're a member of the PokéCards Community as you have an account.
+            To get the Superball and become trustworthy please verify your E-Mail adress.
         @endif
     </div>
 
@@ -101,11 +107,11 @@
             const y = document.getElementById("password");
             if(y.type === "password"){
                 y.type = "text";
-                x.innerHTML = '<img src="{{asset('icons/eye-checked.png')}}" alt="show password"/>';
+                x.innerHTML = '<img src="{{asset('images/icons/eye-checked.png')}}" alt="show password"/>';
             }
             else if(y.type === "text"){
                 y.type = "password";
-                x.innerHTML = '<img src="{{asset('icons/eye-unchecked.png')}}" alt="hide password"/>';
+                x.innerHTML = '<img src="{{asset('images/icons/eye-unchecked.png')}}" alt="hide password"/>';
             }
         }
     </script>
@@ -129,7 +135,7 @@
                                 <input id="password" type="password" class="form-control" name="confirmdelete" placeholder="type in password to confirm deletion of your account.">
                             </div>
                             <div class="col-md-2">
-                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('icons/eye-unchecked.png')}}" alt="show password"/></button>
+                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"/></button>
                             </div>
                             <br/>
                             <br/>
