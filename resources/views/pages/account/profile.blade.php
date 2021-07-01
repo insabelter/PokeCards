@@ -61,8 +61,11 @@
             </form>
         @else
             <label for="verified">Verified:</label>
+            
             <img src="{{asset('images/icons/verified-badge.png')}}" alt="verified badge"/>
             <label for="verified">on {{$user->email_verified_at}} </label>
+
+     
             <br>
         @endif
     </div>
