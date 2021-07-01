@@ -14,37 +14,50 @@
                 <button type="submit" class="btn btn-primary" style="display: inline-block;">Verify my account</button>
             </form>
         @else
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <form method="post" action="/offers">
-                        @csrf
-                        <div class="form-group">
-                            <label for="cardidID">Card Id:</label>
-                            <input type="text" required class="form-control" id="cardidID" name="cardid" placeholder="ID" value="{{$cardId}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="descriptionID">Description:</label>
-                            <textarea type="text" class="form-control" id="descriptionID" name="description" placeholder="Description" style="resize: none; height: 150px;"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="priceID">Price:</label>
-                            <input type="number" required step="0.01" min="0" class="form-control" id="priceID" name="price" placeholder="Price">
-                        </div>
-                        <div class="form-group">
-                            <label for="negotiableID">Negotiable:</label>
-                            <input type="checkbox" id="negotiableID" name="negotiable" style="margin-right: 10px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="gradeID">Grade:</label>
-                            <input type="number" class="form-control" id="gradeID" name="grade" min="0" max="10" oninput="validity.valid||(value='');">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Create</button>
-                    </form>
-                    <p style="margin-top: 10px;">{{session("msg")}}</p>
+            @if($cardId === 'x')
+                Choose a card to create a offer on either the card search or the set explorer:<br>
+                <div style="margin: 10px 0;">
+                    <a class="btn btn-primary btn-small" style="margin-right: 15px;" href="{{ route('card-search') }}">Card Search</a>
+                    <a class="btn btn-primary btn-small" href="{{ route('set-explorer-sets','x') }}">Set Explorer</a>
                 </div>
-            </div>
-        </div>
+            @else
+                <div class="container">
+                    <div class="row">
+                        {{--                        Image only shown if screen is smaller than medium--}}
+                        <div class="col-md-6 d-md-none" style="margin-bottom: 10px;">
+                            <img src="{{$cardImage}}" alt="Offer Card Image" style="height: 395px;">
+                        </div>
+                        <div class="col-md-6">
+                            <form method="post" action="/offers">
+                                @csrf
+                                <input hidden name="cardid" id="cardidId" type="text" value="{{$cardId}}">
+                                <div class="form-group">
+                                    <label for="descriptionID">Description:</label>
+                                    <textarea type="text" class="form-control" id="descriptionID" name="description" placeholder="Description" style="resize: none; height: 150px;"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="priceID">Price:</label>
+                                    <input type="number" required step="0.01" min="0" class="form-control" id="priceID" name="price" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="negotiableID" name="negotiable" style="margin-right: 5px;">
+                                    <label for="negotiableID">Negotiable</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gradeID">Grade:</label>
+                                    <input type="number" class="form-control" id="gradeID" name="grade" min="0" max="10" oninput="validity.valid||(value='');">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </form>
+                            <p style="margin-top: 10px;">{{session("msg")}}</p>
+                        </div>
+{{--                        Image only shown if screen at least medium--}}
+                        <div class="col-md-6 d-none d-md-block">
+                            <img src="{{$cardImage}}" alt="Offer Card Image" style="height: 395px;">
+                        </div>
+                    </div>
+                </div>
+            @endif
         @endif
 
     </div>
