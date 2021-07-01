@@ -30,7 +30,7 @@
                 @enderror
             </div>
             <div class="col-md-2">
-                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="icons/eye-unchecked.png" alt="show password"/></button>
+                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"></button>
             </div>
         </div>
 
@@ -68,11 +68,11 @@
         const y = document.getElementById("password");
         if(y.type === "password"){
             y.type = "text";
-            x.innerHTML = '<img src="icons/eye-checked.png" alt="show password"/>';
+            x.innerHTML = '<img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password">';
         }
         else if(y.type === "text"){
             y.type = "password";
-            x.innerHTML = '<img src="icons/eye-unchecked.png" alt="hide password"/>';
+            x.innerHTML = '<img src="{{asset('images/icons/eye-checked.png')}}" alt="hide password">';
         }
     }
 </script>
