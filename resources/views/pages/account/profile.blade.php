@@ -20,21 +20,36 @@
     <h1>Profile</h1>
 
     <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()">Edit Information</button>
-    <form action="{{route('edit', Auth::user()->id)}}"  method="post">
+    <form action="{{route('edit')}}"  method="post">
         @csrf
         <div class="form-group">
             <label for="usernameID">Username:</label>
-            <input type="text" class="form-control" id="usernameID" name="username" value={{ Auth::user()->name }} readonly>
+            <input type="text" class="form-control" id="usernameID" name="username" value={{$user->name}} readonly>
         </div>
         <fieldset id="editableFieldset" disabled>
             <div class="form-group">
                 <label for="passwordID">Password:</label>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePassword">Change my password</button>
             </div>
+            @if (session('errorChange'))
+                <div class="alert alert-danger">
+                    {{ session('errorChange') }}
+                </div>
+            @endif
+            @if (session('successChange'))
+                <div class="alert alert-success">
+                    {{ session('successChange') }}
+                </div>
+            @endif
             <div class="form-group">
                 <label for="email">E-Mail:</label>
-                <input type="email" class="form-control" id="email" name="email" value={{ Auth::user()->email }}>
+                <input type="email" class="form-control" id="email" name="email" value={{$user->email}}>
             </div>
+            @if (session('successEdit'))
+                <div class="alert alert-success">
+                    {{ session('successEdit') }}
+                </div>
+            @endif
             <button type="submit" class="btn btn-primary">Update Information</button>
         </fieldset>
     </form>
@@ -46,26 +61,44 @@
             </form>
         @else
             <label for="verified">Verified:</label>
-            <img src="{{asset('/images/verified-badge.png')}}" alt="verified badge"/>
-            <label for="verified">on {{Auth::user()->email_verified_at}} </label>
+            
+            <img src="{{asset('images/icons/verified-badge.png')}}" alt="verified badge"/>
+            <label for="verified">on {{$user->email_verified_at}} </label>
+
+     
             <br>
         @endif
     </div>
 
-    <img src="{{asset('images/SadPikachu.png')}}" alt="Sad Pikachu Image" class="col-12 col-md-6" style="padding: 0; border-radius: 0.25rem;">
-
     <div style="margin: 15px 0;">
         <label for="status">Status:</label>
         @if($user->is_admin)
-            <img src="{{asset('icons/ultraball.png')}}" alt="pokeball">
+            <img src="{{asset('images/icons/ultraball.png')}}" alt="ultraball">
+            Ultraball: You are an administrator of the PokéCards site.
+            You have the right to edit and delete users.
         @elseif($verified)
-            <img src="{{asset('icons/superball.png')}}" alt="superball">
+            <img src="{{asset('images/icons/superball.png')}}" alt="superball">
+            Superball: You're a verified member of the PokéCards Community.
+            That will show up in your offers and so you are more reliable.
         @else
-            <img src="{{asset('icons/pokeball.png')}}" alt="superball">
+            <img src="{{asset('images/icons/pokeball.png')}}" alt="pokeball">
+            Pokeball: You're a member of the PokéCards Community as you have an account.
+            To get the Superball and become trustworthy please verify your E-Mail adress.
         @endif
     </div>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteAccount">Delete my account</button>
+
+    @if (session('errorDelete'))
+        <div class="alert alert-danger">
+            {{ session('errorDelete') }}
+        </div>
+    @endif
+    @if (session('successDelete'))
+        <div class="alert alert-success">
+            {{ session('successDelete') }}
+        </div>
+    @endif
 
     <script type="text/javascript">
         function startEditing(){
@@ -77,11 +110,11 @@
             const y = document.getElementById("password");
             if(y.type === "password"){
                 y.type = "text";
-                x.innerHTML = '<img src="{{asset('icons/eye-checked.png')}}" alt="show password"/>';
+                x.innerHTML = '<img src="{{asset('images/icons/eye-checked.png')}}" alt="show password"/>';
             }
             else if(y.type === "text"){
                 y.type = "password";
-                x.innerHTML = '<img src="{{asset('icons/eye-unchecked.png')}}" alt="hide password"/>';
+                x.innerHTML = '<img src="{{asset('images/icons/eye-unchecked.png')}}" alt="hide password"/>';
             }
         }
     </script>
@@ -98,14 +131,14 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{route('deleteAccount', Auth::user()->id)}}" method="post">
+                    <form action="{{route('deleteAccount')}}" method="post">
                         @csrf
                         <div class="row">
                             <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 my-col">
                                 <input id="password" type="password" class="form-control" name="confirmdelete" placeholder="type in password to confirm deletion of your account.">
                             </div>
                             <div class="col-md-2">
-                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('icons/eye-unchecked.png')}}" alt="show password"/></button>
+                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"/></button>
                             </div>
                             <br/>
                             <br/>
@@ -132,16 +165,6 @@
                 </div>
 
                 <div class="modal-body">
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
                     <form class="form-horizontal" method="POST" action="{{ route('changePassword') }}">
                         @csrf
 

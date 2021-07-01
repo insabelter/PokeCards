@@ -22,7 +22,7 @@
         <tr class="table-primary">
             <th scope="col" style="width: 20%;">Name</th>
             <th scope="col" style="width: 20%;">E-Mail</th>
-            <th scope="col" style="width: 20%;">Verified</th>
+            <th scope="col" style="width: 20%;">Verified at</th>
             <th scope="col" style="width: 10%;">Is Admin?</th>
             <th scope="col" style="width: 15%;">Make Admin</th>
             <th scope="col" style="width: 15%;">Delete</th>
@@ -47,13 +47,13 @@
                         <td class="d-none d-sm-table-cell">
                             <form action="">
                                 @csrf
-                                <a class="btn btn-primary" href="">Make Admin</a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Make Admin</button>
                             </form>
                         </td>
                         <td class="d-none d-sm-table-cell">
                             <form action="">
                                 @csrf
-                                <a class="btn btn-primary" href="">Delete</a>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Delete user</button>
                             </form>
                         </td>
                     </tr>
