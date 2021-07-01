@@ -41,15 +41,21 @@
                         <td>{{ $user->email_verified_at }}</td>
                         @if($user->is_admin == 1)
                             <td>yes</td>
+                            <td class="d-none d-sm-table-cell">
+                                <form action="">
+                                    @csrf
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Revoke Admin</button>
+                                </form>
+                            </td>
                         @else
                             <td>no</td>
+                            <td class="d-none d-sm-table-cell">
+                                <form action="">
+                                    @csrf
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Test Admin</button>
+                                </form>
+                            </td>
                         @endif
-                        <td class="d-none d-sm-table-cell">
-                            <form action="">
-                                @csrf
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Make Admin</button>
-                            </form>
-                        </td>
                         <td class="d-none d-sm-table-cell">
                             <form action="">
                                 @csrf
@@ -69,15 +75,22 @@
                      <td>{{ $user->email_verified_at }}</td>
                      @if($user->is_admin == 1)
                          <td>yes</td>
+                         <td class="d-none d-sm-table-cell">
+                             <form action="">
+                                 @csrf
+                                 <a class="btn btn-primary" href="">Revoke Admin</a>
+                             </form>
+                         </td>
                      @else
                          <td>no</td>
+                         <td class="d-none d-sm-table-cell">
+                             <form action="">
+                                 @csrf
+                                 <a class="btn btn-primary" href="">Make Admin</a>
+                             </form>
+                         </td>
                      @endif
-                     <td class="d-none d-sm-table-cell">
-                         <form action="">
-                             @csrf
-                             <a class="btn btn-primary" href="">Make Admin</a>
-                         </form>
-                     </td>
+
                      <td class="d-none d-sm-table-cell">
                          <form action="">
                              @csrf

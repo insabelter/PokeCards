@@ -17,9 +17,8 @@
     </div>
     <div style="margin: 15px 0;">
         <label for="express">Would you like the express service? (service takes half of the time)</label>
-        <label class="btn btn-primary">
-            <input type="checkbox" id="express" checked autocomplete="off"> Yes
-        </label>
+        <label for="yes">Yes:</label>
+        <input type="checkbox" id="express" checked autocomplete="off" style="margin-right: 10px;">
     </div>
 
     <button class="btn btn-primary" onclick="calculate()">Calculate</button>
@@ -47,13 +46,27 @@
 
             let price;
 
-            price = Math.round(number.value * 20.90 + certificate.value * 3);
+            price = number.value * 20.90 + certificate.value * 3;
 
             if(express.checked === true){
-                cost.value = Math.round(number.value * 20.90 + price) + ' €';
+                price = number.value * 20.90 + price;
             }
-            else{
-                cost.value = price + ' €';
+
+            //Rabatt für bestimmte Kartenanzahl
+            if(number.value >= 100){
+                cost.value = Math.round(price * 0.85) + " €";
+            }
+            else if(number.value >= 65){
+                cost.value = Math.round(price * 0.86) + " €";
+            }
+            else if(number.value >= 30){
+                cost.value = Math.round(price * 0.87) + " €";
+            }
+            else if(number.value >= 10){
+                cost.value = Math.round(price * 0.9) + " €";
+            }
+            else {
+                cost.value = Math.round(price) + " €";
             }
         }
     </script>

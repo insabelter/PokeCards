@@ -25,14 +25,14 @@ class ProfileController extends Controller
             'email' => $request->email,
         ]);
 
-        return redirect()->back()->with("successEdit","Your information have been updated.");
+        return redirect()->back()->with("successEdit","Your information has been updated.");
     }
 
     public function changePassword(Request $request){
 
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
-            return redirect()->back()->with("errorChange","Your current password does not matches with the password you provided. Please try again.");
+            return redirect()->back()->with("errorChange","Your current password does not match with the password you provided. Please try again.");
         }
 
         if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
