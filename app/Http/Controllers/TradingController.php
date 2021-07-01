@@ -12,7 +12,7 @@ class TradingController extends Controller
 {
 
     public function marketplace(Request $request){
-        $offers = Offers::All();
+        $offers = Offers::All()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
 
@@ -36,7 +36,7 @@ class TradingController extends Controller
             return redirect('');
         }
 
-        $offers = Offers::query()->where('userId',Auth::id())->get();
+        $offers = Offers::query()->where('userId',Auth::id())->get()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
         if($cardId == "x"){

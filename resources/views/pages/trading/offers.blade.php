@@ -8,6 +8,12 @@
     <div>
         <h2>Create new Offer</h2>
 
+        @if(!auth()->user()->hasVerifiedEmail())
+            You need to verify your Account before you can create Offers!<br>
+            <form action="{{route('verficationMail')}}" method="get" style="margin: 15px 0;">
+                <button type="submit" class="btn btn-primary" style="display: inline-block;">Verify my account</button>
+            </form>
+        @else
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -26,8 +32,8 @@
                             <input type="number" required step="0.01" min="0" class="form-control" id="priceID" name="price" placeholder="Price">
                         </div>
                         <div class="form-group">
-                            <label for="verhandelbarID">Verhandelbar:</label>
-                            <input type="checkbox" id="verhandelbarID" name="verhandelbar" style="margin-right: 10px;">
+                            <label for="negotiableID">Negotiable:</label>
+                            <input type="checkbox" id="negotiableID" name="negotiable" style="margin-right: 10px;">
                         </div>
                         <div class="form-group">
                             <label for="gradeID">Grade:</label>
@@ -39,11 +45,14 @@
                 </div>
             </div>
         </div>
+        @endif
 
     </div>
 
     <div>
-        <h2>Your previous Offers</h2>
+        @if(!$offerArray == [])
+            <h2>Your previous Offers</h2>
+        @endif
 
         <div class="container">
             <div class="row">
@@ -53,7 +62,21 @@
                             <form method="post" action="/offers/delete">
                                 @csrf
                                 <input type="hidden" name="offerId" value="{{$offer->id}}">
-                                <button type="submit" class="btn btn-primary btn-small">Delete Offer</button>
+
+                                <button type="button" data-toggle="modal" data-target="#cardModal{{$offer->id}}" class="btn btn-primary btn-small">Delete Offer</button>
+
+                                {{-- Modal for Offer Deletion --}}
+                                <div class="modal fade" id="cardModal{{$offer->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                Are you sure you want to delete this offer?<br><br>
+                                                <button type="submit" class="btn btn-primary btn-small">Delete Offer</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </x-offer-card>
                     </div>
