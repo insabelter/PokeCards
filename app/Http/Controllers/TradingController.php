@@ -20,12 +20,22 @@ class TradingController extends Controller
     }
 
     public function watchlist(Request $request){
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
         $offerArray = [];
 
         return view('pages.trading.watchlist', compact('offerArray'));
     }
 
     public function offers($cardId){
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
         $offers = Offers::query()->where('userId',Auth::id())->get();
 
         $offerArray = $this->toDisplayOffer($offers);
@@ -36,6 +46,10 @@ class TradingController extends Controller
     }
 
     public function newOffer(Request $request) {
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
 
         $offer = new Offers();
         $offer->cardId = $request->cardid;
@@ -50,6 +64,11 @@ class TradingController extends Controller
     }
 
     public function deleteOffer(Request $request){
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
         Offers::query()->where('offerId',$request->offerId)->delete();
 
         return redirect() -> route('offers','x');

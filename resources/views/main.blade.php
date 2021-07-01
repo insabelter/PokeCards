@@ -33,8 +33,10 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="{{ route('marketplace') }}">Marketplace</a>
-                                    <a class="dropdown-item" href="{{ route('watchlist') }}">Watchlist</a>
-                                    <a class="dropdown-item" href="{{ route('offers', 'x') }}">Your Offers</a>
+                                    @if(Auth::id() !== null)
+                                        <a class="dropdown-item" href="{{ route('watchlist') }}">Watchlist</a>
+                                        <a class="dropdown-item" href="{{ route('offers', 'x') }}">Your Offers</a>
+                                    @endif
                                 </div>
                             </li>
                             <li class="btn btn-primary btn-sm nav-button dropdown">
