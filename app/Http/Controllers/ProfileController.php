@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offers;
+use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,6 +67,7 @@ class ProfileController extends Controller
         if(Hash::check($request->confirmdelete, $user->password)){
             //Delete Offers which are connected to the user
             Offers::query()->where('userId',$user->id)->delete();
+            Watchlist::query()->where('userId',$user->id)->delete();
 
             $user->delete();
 

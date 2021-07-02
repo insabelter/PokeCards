@@ -12,7 +12,7 @@
                     <x-offer-card :offer="$offer">
                         <p class="card-text">Offered By: <span class="font-weight-bold">{{$offer->user}}</span></p>
 
-                        @if($offer->userId != Auth::id())
+                        @if(Auth::id() !== null && $offer->userId != Auth::id())
                         <div class="container">
                             <div class="row">
 
