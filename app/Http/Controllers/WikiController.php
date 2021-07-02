@@ -8,10 +8,11 @@ use App\Models\Sets;
 class WikiController extends Controller
 {
     public function card_search(){
+        $sets = Sets::all();
 
         // $cards now contains a leftJoin with Sets on Cards
         $cards = Cards::query()->leftJoin('Sets as Sets','Cards.setId','=','Sets.setId')->get();
-        return view('pages.wiki.card-search', compact('cards'));
+        return view('pages.wiki.card-search', compact('cards','sets'));
     }
 
     public function set_explorer($setId){
@@ -51,7 +52,7 @@ class WikiController extends Controller
         $currentSetCards["Trainer"] = Cards::query()->where('cardType','Trainer')->where('setId',$setId)->orderBy('name')->get();
         $currentSetCards["Energy"] = Cards::query()->where('cardType','Energy')->where('setId',$setId)->orderBy('name')->get();
 
-        return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet'));
+        return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet', 'sets'));
     }
 
 

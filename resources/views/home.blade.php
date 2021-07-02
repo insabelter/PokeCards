@@ -11,7 +11,7 @@
                     <div class="card-header">What would you like to check out?</div>
                         <div class="card-body">
                             <ul>
-                                <li>Would you like to see if there are interesting offers on the <a href="{{route('marketplace')}}">marketplace</a>?</li><br>
+                                <li>Would you like to see if there are interesting offers on the <a href="{{route('marketplace',['x','x'])}}">marketplace</a>?</li><br>
 
                                 <li>Are you looking for a special card? Then go to the <a href="{{route('card-search')}}">card search</a>?</li><br>
 

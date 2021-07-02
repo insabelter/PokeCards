@@ -16,12 +16,15 @@ use Illuminate\Support\Facades\Redirect;
 class TradingController extends Controller
 {
 
-    public function marketplace(){
+    public function marketplace($cardName,$cardSet){
+        $cardName = $cardName === 'x' ? '' : $cardName;
+        $cardSet = $cardSet === 'x' ? '' : $cardSet;
+
         $offers = Offers::All()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
 
-        return view('pages.trading.marketplace', compact('offerArray'));
+        return view('pages.trading.marketplace', compact('offerArray','cardName','cardSet'));
     }
 
     public function watchlist(Request $request){
@@ -130,8 +133,8 @@ class TradingController extends Controller
         if(isset($offer) && isset($card) && isset($creator)){
             $data = (object)array(
                 "offer_card" => $card->name,
-                "username" => $creator->name,
-                "usermail" => $creator->email,
+                "username" => auth()->user()->name,
+                "usermail" => auth()->user()->email,
                 "message" => $request->message
             );
 

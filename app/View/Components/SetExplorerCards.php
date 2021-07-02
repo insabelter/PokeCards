@@ -7,15 +7,17 @@ use Illuminate\View\Component;
 class SetExplorerCards extends Component
 {
     public $cardArray;
+    public $sets;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($cardArray)
+    public function __construct($cardArray,$sets)
     {
         $this->cardArray = $cardArray;
+        $this->sets = $sets;
     }
 
     /**

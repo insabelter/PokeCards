@@ -6,10 +6,11 @@
     <h1>Marketplace</h1>
 
     <form name="offer-search" action="" method="get" style="margin: 15px;">
-        <div class="col-lg-3 col-md-6" style="padding: 0;">
+        You can search for a specific card or set by entering the name:
+        <div class="col-lg-3 col-md-6" style="padding: 0; margin-top: 10px;">
             <div class="input-group">
-                <input type="text" name="cardName" id="cardName" class="form-control" placeholder="Card Name" value="">
-                <input type="text" name="cardSet" id="cardSet" class="form-control" placeholder="Card Set" value="">
+                <input type="text" name="cardName" id="cardName" class="form-control" placeholder="Card Name" value="{{$cardName}}">
+                <input type="text" name="cardSet" id="cardSet" class="form-control" placeholder="Card Set" value="{{$cardSet}}">
                 <div class="input-group-append">
                     <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Submit">
                 </div>

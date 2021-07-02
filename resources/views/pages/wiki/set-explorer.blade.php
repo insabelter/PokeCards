@@ -58,7 +58,7 @@
                                 </button>
                             </div>
                             <div id="collapse{{$type}}" class="collapse show" aria-labelledby="heading{{$type}}">
-                                <x-set-explorer-cards :cardArray="$currentSetCards[$type]">
+                                <x-set-explorer-cards :cardArray="$currentSetCards[$type]" :sets="$sets">
                                 </x-set-explorer-cards>
                             </div>
                             @endif

@@ -30,7 +30,7 @@ Route::get('about', [FooterController::class,'about']) -> name("about");
 Route::get('privacy', [FooterController::class,'privacy']) -> name("privacy");
 
 // Trading -----------------------------------
-Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
+Route::get('marketplace/{cardName}/{cardSet}', [TradingController::class,'marketplace']) -> name("marketplace");
 Route::post('marketplace/watch', [TradingController::class,'addToWatchlist']);
 Route::post('marketplace/contact', [TradingController::class,'contactUser']);
 Route::get('watchlist', [TradingController::class,'watchlist']) -> name("watchlist");
