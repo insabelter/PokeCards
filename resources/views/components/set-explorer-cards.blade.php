@@ -11,7 +11,7 @@
                             <div class="modal-content">
                                 <img style="padding: 10px;" src="{{$card->largeImage}}" alt="{{$card->name}}">
                                 <span>
-                                <a class="btn btn-primary btn-small" style="margin: 0 10px 10px 10px;" href="{{ route('marketplace') }}">Search on Marketplace</a>
+                                <a class="btn btn-primary btn-small" style="margin: 0 10px 10px 10px;" href="{{ route('marketplace',[$card->name,$sets->firstWhere('setId', $card->setId)->setName])}}">Search on Marketplace</a>
                                 <a class="btn btn-primary btn-small" style="margin: 0 10px 10px 10px; float: right;" href="{{ route('offers',$card->id) }}">Create Offer</a>
                             </span>
                             </div>

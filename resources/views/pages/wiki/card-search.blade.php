@@ -19,12 +19,13 @@
     <table class="table table-hover" style="">
         <thead>
         <tr class="table-primary">
-            <th scope="col" style="width: 25%;">Set</th>
-            <th scope="col" style="width: 25%;">Name</th>
-            <th scope="col" style="width: 25%;">Card Type</th>
+            <th scope="col" style="width: 23%;">Set</th>
+            <th scope="col" style="width: 23%;">Name</th>
+            <th scope="col" style="width: 23%;">Card Type</th>
 {{--                    Only shown if screen larger than very small--}}
-            <th scope="col" class="d-none d-sm-table-cell" style="width: 12.5%;">Image</th>
-            <th scope="col" class="d-none d-sm-table-cell" style="width: 12.5%;">Offer</th>
+            <th scope="col" class="d-none d-sm-table-cell" style="width: 10%;">Image</th>
+            <th scope="col" class="d-none d-sm-table-cell" style="width: 10%;">Offer</th>
+            <th scope="col" class="d-none d-sm-table-cell" style="width: 10%;">Marketplace</th>
         </tr>
         </thead>
         <tbody>
@@ -38,12 +39,13 @@
                             Show Image
                         </button>
                     </td>
-                    <td>{{ $card->name }}</td>
-                    <td>{{ $card->cardtype }} <br>
+                    <td>{{ $card->name }}<br>
                         <form action="/offers">
                             @csrf
                             <a class="btn btn-primary d-sm-none" style="margin-top: 5px;" href="{{ route('offers',$card->id) }}">Create Offer</a>
-                        </form>
+                        </form></td>
+                    <td>{{ $card->cardtype }} <br>
+                        <a class="btn btn-primary btn-small d-sm-none" style="margin-top: 5px;" href="{{ route('marketplace',[$card->name,$sets->firstWhere('setId', $card->setId)->setName])}}">Find Offer</a>
                     </td>
 {{--                    Only shown if screen larger than very small--}}
                     <td id="accordion{{$card->id}}" class="d-none d-sm-table-cell">
@@ -57,6 +59,10 @@
                             <a class="btn btn-primary" href="{{ route('offers',$card->id) }}">Create Offer</a>
                         </form>
                     </td>
+                    <td class="d-none d-sm-table-cell">
+                        <a class="btn btn-primary btn-small" style="margin: 0 10px 10px 10px;" href="{{ route('marketplace',[$card->name,$sets->firstWhere('setId', $card->setId)->setName])}}">Find Offer</a>
+                    </td>
+
                 </tr>
                 <tr>
                     <td colspan="5" id="collapse{{$card->id}}" class="collapse" data-parent="#accordion{{$card->id}}" style="text-align: center;">

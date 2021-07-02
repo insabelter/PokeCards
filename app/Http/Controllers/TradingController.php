@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactUser;
 use App\Models\Cards;
 use App\Models\Offers;
+use App\Models\Sets;
 use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Http\Request;
@@ -15,12 +16,15 @@ use Illuminate\Support\Facades\Redirect;
 class TradingController extends Controller
 {
 
-    public function marketplace(Request $request){
+    public function marketplace($cardName,$cardSet){
+        $cardName = $cardName === 'x' ? '' : $cardName;
+        $cardSet = $cardSet === 'x' ? '' : $cardSet;
+
         $offers = Offers::All()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
 
-        return view('pages.trading.marketplace', compact('offerArray'));
+        return view('pages.trading.marketplace', compact('offerArray','cardName','cardSet'));
     }
 
     public function watchlist(Request $request){
@@ -129,8 +133,8 @@ class TradingController extends Controller
         if(isset($offer) && isset($card) && isset($creator)){
             $data = (object)array(
                 "offer_card" => $card->name,
-                "username" => $creator->name,
-                "usermail" => $creator->email,
+                "username" => auth()->user()->name,
+                "usermail" => auth()->user()->email,
                 "message" => $request->message
             );
 
@@ -144,6 +148,7 @@ class TradingController extends Controller
         $offerArray = [];
         foreach($offers as $offer){
             $card = Cards::query()->where('id',$offer->cardId)->get()->first();
+            $set = Sets::query()->where('setId',$card->setId)->get()->first();
             $user = User::query()->where('id',$offer->userId)->get()->first();
             $watch = Watchlist::query()->where('userId',Auth::id())->where('watchedOfferId',$offer->offerId)->get()->first();
             $watched = isset($watch);
@@ -154,6 +159,7 @@ class TradingController extends Controller
                 "userId" => $user->id,
                 "image" => $card->largeImage,
                 "name" => $card->name,
+                "set" => $set->setName,
                 "cardtype" => $card->cardtype,
                 "description" => $offer->description,
                 "price" => $offer->preis,

@@ -5,9 +5,23 @@
 @section('content')
     <h1>Marketplace</h1>
 
+    <form name="offer-search" action="" method="get" style="margin: 15px;">
+        You can search for a specific card or set by entering the name:
+        <div class="col-lg-3 col-md-6" style="padding: 0; margin-top: 10px;">
+            <div class="input-group">
+                <input type="text" name="cardName" id="cardName" class="form-control" placeholder="Card Name" value="{{$cardName}}">
+                <input type="text" name="cardSet" id="cardSet" class="form-control" placeholder="Card Set" value="{{$cardSet}}">
+                <div class="input-group-append">
+                    <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Submit">
+                </div>
+            </div>
+        </div>
+    </form>
+
     <div class="container">
         <div class="row">
             @foreach($offerArray as $offer)
+                @if((!isset($_GET['cardName']) && !isset($_GET['cardSet'])) || (str_contains(strtolower($offer->name),strtolower($_GET['cardName'])) && str_contains(strtolower($offer->set),strtolower($_GET['cardSet']))))
                 <div class="col-lg-6" style="padding: 15px;">
                     <x-offer-card :offer="$offer">
                         <p class="card-text">Offered By: <span class="font-weight-bold">{{$offer->user}}</span></p>
@@ -61,6 +75,7 @@
 
                     </x-offer-card>
                 </div>
+                @endif
             @endforeach
         </div>
     </div>
