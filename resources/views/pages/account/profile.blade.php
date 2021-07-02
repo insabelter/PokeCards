@@ -6,14 +6,14 @@
 @section('content')
 
     <li class="btn btn-icon">
+        @if($user->icon == null)
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="https://img.icons8.com/color/96/000000/bullbasaur.png" alt="bullbasaur icon"/>
+            <img src="{{asset('images/pokemon/default.png')}}" alt="verified badge"/>
         </a>
+        @endif
         <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{{ route('card-search') }}">Bullbasaur <img src="https://img.icons8.com/color/48/000000/bullbasaur.png" alt="bullbasaur icon"/></button>
-            </a>
-            <a class="dropdown-item" href="{{ route('set-explorer-sets', 'x') }}">Charmander <img src="https://img.icons8.com/color/24/000000/charmander.png" alt="bullbasaur icon"/></button>
-            </a>
+            {{--@foreach($icons as $icon)--}}
+            <a class="dropdown-item">Bullbasaur <img src="https://img.icons8.com/color/24/000000/bullbasaur.png" alt="pokemon icon"/></a>
         </div>
     </li>
 
