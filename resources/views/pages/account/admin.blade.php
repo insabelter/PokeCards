@@ -28,8 +28,8 @@
             <th scope="col" style="width: 15%;">Delete</th>
         </tr>
         </thead>
-        <tbody>
 
+        <tbody>
          @if(isset($_GET['username']))
             @foreach($users as $user)
                 @if(str_contains(strtolower($user->name),strtolower($_GET['username'])) && $_GET['username']!="" && $_GET['username']!=" ")
@@ -108,7 +108,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the user {{$user->name}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the user {{$user->id}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
