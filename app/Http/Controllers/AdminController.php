@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        if(!$user->isadmin){
+        if(!$user->is_admin){
             return redirect('');
         }
 
@@ -20,7 +21,10 @@ class AdminController extends Controller
 
     }
 
-    public function deleteUser(){
+    public function deleteUser(Request $request){
+        User::query()->where('id',$request->id)->delete();
+
+        return redirect() -> route('admin');
 
     }
 

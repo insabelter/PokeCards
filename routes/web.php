@@ -28,6 +28,9 @@ Route::get('/', function () {
 // Footer -----------------------------------
 Route::get('about', [FooterController::class,'about']) -> name("about");
 Route::get('privacy', [FooterController::class,'privacy']) -> name("privacy");
+Route::get('contact', function () {
+    return view('footer.contact');
+})->name('contact');
 
 // Trading -----------------------------------
 Route::get('marketplace', [TradingController::class,'marketplace']) -> name("marketplace");
@@ -38,7 +41,7 @@ Route::get('offers/{cardId}', [TradingController::class,'offers']) -> name("offe
 Route::post('offers', [TradingController::class,'newOffer']);
 Route::post('offers/delete', [TradingController::class,'deleteOffer']);
 
-// wiki -----------------------------------
+// wiki -------------------------------------
 Route::get('card-search', [WikiController::class,'card_search']) -> name("card-search");
 Route::get('set-explorer/{setId}', [WikiController::class,'set_explorer']) -> name("set-explorer-sets");
 
@@ -69,14 +72,10 @@ Route::post('/changePassword', [ProfileController::class,'changePassword'])->nam
 
 //Admin
 Route::get('admin', [AdminController::class,'index']) -> name("admin");
+Route::post('admin/delete', [AdminController::class,'deleteUser']);
 
-Auth::routes();
-
+//Home (page after login)
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('contact', function () {
-    return view('pages.contact');
-})->name('contact');
-
-
+//Contactform
 Route::post('/contact',  [HomeController::class,'send_mail'])->name('addContact');

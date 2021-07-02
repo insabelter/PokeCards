@@ -92,9 +92,25 @@
                      @endif
 
                      <td class="d-none d-sm-table-cell">
-                         <form action="">
+                         <form method="post" action="/admin/delete">
                              @csrf
-                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Delete user</button>
+                             <input type="hidden" name="id" value="{{$user->id}}">
+
+                             <button type="button" data-toggle="modal" data-target="#deleteUser{{$user->id}}" class="btn btn-primary btn-small">Delete User</button>
+
+                             {{-- Modal for user deletion --}}
+                             <div class="modal fade" id="deleteUser{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                 <div class="modal-dialog" role="document">
+                                     <div class="modal-content">
+                                         <div class="modal-body">
+                                             Are you sure you want to delete the account of {{$user->name}}?<br><br>
+                                             <button type="submit" class="btn btn-primary btn-small">Delete User</button>
+                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                         </div>
+
+                                     </div>
+                                 </div>
+                             </div>
                          </form>
                      </td>
                  </tr>
