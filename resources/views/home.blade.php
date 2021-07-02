@@ -10,18 +10,18 @@
                 <div class="card">
                     <div class="card-header">What would you like to check out?</div>
                         <div class="card-body">
-                            Would you like to see if there are interesting offers on the <a href="{{route('marketplace')}}">marketplace</a>?<br>
+                            <ul>
+                                <li>Would you like to see if there are interesting offers on the <a href="{{route('marketplace')}}">marketplace</a>?</li><br>
 
-                            Are you looking for a special card? Then go to the <a href="{{route('card-search')}}">card search</a>?<br>
+                                <li>Are you looking for a special card? Then go to the <a href="{{route('card-search')}}">card search</a>?</li><br>
 
-                            If you are more interested in complete sets check out the<a href="{{ route('set-explorer-sets', 'x') }}">set explorer search</a>?<br>
+                                <li>If you are more interested in complete sets check out the <a href="{{ route('set-explorer-sets', 'x') }}">set explorer search</a>?</li><br>
 
-                            Dou you want to edit your <a href="{{route('profile')}}">profile</a>?<br>
+                                <li>Dou you want to edit your <a href="{{route('profile')}}">profile</a></li><br>
 
-                            Dou you know our <a href="{{route('guide')}}">grading guide</a>?<br>
+                                <li>Dou you know our <a href="{{route('guide')}}">grading guide</a>?</li><br>
 
-                            Dou you know our <a href="{{route('guide')}}">grading guide</a>?
-
+                            </ul>
                         </div>
                 </div>
             </div>
