@@ -49,7 +49,7 @@ class ResetPasswordNotification extends ResetPassword
                 'email' => $notifiable->getEmailForPasswordReset(),
             ], false));
 
-        return (new MailMessage)->view('emails.reset-password', ['url' => $url]);
+        return (new MailMessage)->markdown('emails.reset-password', ['url' => $url]);
     }
 
     /**

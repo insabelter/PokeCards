@@ -7,6 +7,7 @@ use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
@@ -84,6 +85,6 @@ class ProfileController extends Controller
 
     public function sendVarificationMail(){
         auth()->user()->sendEmailVerificationNotification();
-        return redirect('/profile');
+        return Redirect::back();
     }
 }

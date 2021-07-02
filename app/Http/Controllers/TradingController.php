@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUser;
 use App\Models\Cards;
 use App\Models\Offers;
 use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 
 class TradingController extends Controller
@@ -116,6 +118,26 @@ class TradingController extends Controller
 
         return Redirect::back();
 
+    }
+
+    public function contactUser(Request $request){
+
+        $offerId = $request->offerId;
+        $offer = Offers::query()->where('offerId',$offerId)->get()->first();
+        $card = Cards::query()->where('id',$offer->cardId)->get()->first();
+        $creator = User::query()->where('id',$offer->userId)->get()->first();
+        if(isset($offer) && isset($card) && isset($creator)){
+            $data = (object)array(
+                "offer_card" => $card->name,
+                "username" => $creator->name,
+                "usermail" => $creator->email,
+                "message" => $request->message
+            );
+
+            Mail::to($creator->email)->send(new ContactUser($data));
+        }
+
+        return Redirect::back();
     }
 
     private function toDisplayOffer($offers){
