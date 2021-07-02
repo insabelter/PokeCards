@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TradingController;
 use App\Http\Controllers\WikiController;
@@ -71,4 +72,11 @@ Route::get('admin', [AdminController::class,'index']) -> name("admin");
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
+
+Route::post('/contact',  [HomeController::class,'send_mail'])->name('addContact');
