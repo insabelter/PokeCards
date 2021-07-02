@@ -41,18 +41,22 @@
                         <td>{{ $user->email_verified_at }}</td>
                         @if($user->is_admin == 1)
                             <td>yes</td>
+
                             <td class="d-none d-sm-table-cell">
-                                <form action="">
+                                <form method="post" action="/admin/revoke">
                                     @csrf
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Revoke Admin</button>
+                                    <input type="hidden" name="id" value="{{$user->id}}">
+                                    <button type="submit" class="btn btn-primary btn-small">Revoke Admin</button>
                                 </form>
                             </td>
                         @else
                             <td>no</td>
+
                             <td class="d-none d-sm-table-cell">
-                                <form action="">
+                                <form method="post" action="/admin/make">
                                     @csrf
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Test Admin</button>
+                                    <input type="hidden" name="id" value="{{$user->id}}">
+                                    <button type="submit" class="btn btn-primary btn-small">Make Admin</button>
                                 </form>
                             </td>
                         @endif
