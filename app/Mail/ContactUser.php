@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
 class ContactUser extends Mailable
 {
@@ -37,8 +38,9 @@ class ContactUser extends Mailable
      */
     public function build()
     {
+        $user = auth()->user();
         return $this->from('pokecards.site@gmail.com','PokéCards')
-                    ->replyTo($this->usermail, $this->username)
+                    ->replyTo($user->email, $user->name)
                     ->markdown('emails.contact-user');
     }
 }
