@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactUser;
 use App\Models\Cards;
 use App\Models\Offers;
+use App\Models\Sets;
 use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 class TradingController extends Controller
 {
 
-    public function marketplace(Request $request){
+    public function marketplace(){
         $offers = Offers::All()->sortDesc();
 
         $offerArray = $this->toDisplayOffer($offers);
@@ -144,6 +145,7 @@ class TradingController extends Controller
         $offerArray = [];
         foreach($offers as $offer){
             $card = Cards::query()->where('id',$offer->cardId)->get()->first();
+            $set = Sets::query()->where('setId',$card->setId)->get()->first();
             $user = User::query()->where('id',$offer->userId)->get()->first();
             $watch = Watchlist::query()->where('userId',Auth::id())->where('watchedOfferId',$offer->offerId)->get()->first();
             $watched = isset($watch);
@@ -154,6 +156,7 @@ class TradingController extends Controller
                 "userId" => $user->id,
                 "image" => $card->largeImage,
                 "name" => $card->name,
+                "set" => $set->setName,
                 "cardtype" => $card->cardtype,
                 "description" => $offer->description,
                 "price" => $offer->preis,
