@@ -73,6 +73,8 @@ Route::post('/changePassword', [ProfileController::class,'changePassword'])->nam
 //Admin
 Route::get('admin', [AdminController::class,'index']) -> name("admin");
 Route::post('admin/delete', [AdminController::class,'deleteUser']);
+Route::post('admin/make', [AdminController::class,'makeAdmin']);
+Route::post('admin/revoke', [AdminController::class,'revokeAdmin']);
 
 //Home (page after login)
 Route::get('/home', [HomeController::class, 'index'])->name('home');

@@ -57,14 +57,32 @@
                             </td>
                         @endif
                         <td class="d-none d-sm-table-cell">
-                            <form action="">
+                            <form method="post" action="/admin/delete">
                                 @csrf
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDeletion">Delete user</button>
+                                <input type="hidden" name="id" value="{{$user->id}}">
+
+                                <button type="button" data-toggle="modal" data-target="#deleteUser{{$user->id}}" class="btn btn-primary btn-small">Delete User</button>
+
+                                {{-- Modal for user deletion --}}
+                                <div class="modal fade" id="deleteUser{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                Are you sure you want to delete the account of {{$user->name}}?<br><br>
+                                                <button type="submit" class="btn btn-primary btn-small">Delete User</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </td>
                     </tr>
                 @endif
             @endforeach
+
+         {{--default -> all accounts if no name is entered--}}
          @else
              @foreach($users as $user)
                  <tr>
@@ -73,29 +91,34 @@
                      <td>{{ $user->email }}
                      </td>
                      <td>{{ $user->email_verified_at }}</td>
+
                      @if($user->is_admin == 1)
                          <td>yes</td>
+
                          <td class="d-none d-sm-table-cell">
-                             <form action="">
+                             <form method="post" action="/admin/revoke">
                                  @csrf
-                                 <a class="btn btn-primary" href="">Revoke Admin</a>
+                                 <input type="hidden" name="id" value="{{$user->id}}">
+                                 <button type="submit" class="btn btn-primary btn-small">Revoke Admin</button>
                              </form>
                          </td>
                      @else
                          <td>no</td>
+
                          <td class="d-none d-sm-table-cell">
-                             <form action="">
+                             <form method="post" action="/admin/make">
                                  @csrf
-                                 <a class="btn btn-primary" href="">Make Admin</a>
+                                 <input type="hidden" name="id" value="{{$user->id}}">
+                                 <button type="submit" class="btn btn-primary btn-small">Make Admin</button>
                              </form>
                          </td>
                      @endif
 
+                     {{-- delete the user in the row --}}
                      <td class="d-none d-sm-table-cell">
                          <form method="post" action="/admin/delete">
                              @csrf
                              <input type="hidden" name="id" value="{{$user->id}}">
-
                              <button type="button" data-toggle="modal" data-target="#deleteUser{{$user->id}}" class="btn btn-primary btn-small">Delete User</button>
 
                              {{-- Modal for user deletion --}}
@@ -118,24 +141,6 @@
          @endif
         </tbody>
     </table>
-
-    {{-- modal confirm deletion --}}
-    <div class="modal fade" id="confirmDeletion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete the user {{$user->id}}</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Yes, I'm sure</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 @endsection
 

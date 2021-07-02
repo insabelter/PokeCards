@@ -17,15 +17,26 @@ class AdminController extends Controller
         return view('pages.account.admin', compact('users'));
     }
 
-    public function makeAdmin(){
+    public function makeAdmin(Request $request){
+        User::query()->where('id',$request->id)->update([
+            'is_admin' => 1,
+        ]);
 
+        return redirect() -> route('admin');
+    }
+
+    public function revokeAdmin(Request $request){
+        User::query()->where('id',$request->id)->update([
+            'is_admin' => 0
+        ]);
+
+        return redirect() -> route('admin');
     }
 
     public function deleteUser(Request $request){
         User::query()->where('id',$request->id)->delete();
 
         return redirect() -> route('admin');
-
     }
 
 }
