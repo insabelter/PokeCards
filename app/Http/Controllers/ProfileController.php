@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     public function index() {
+        // Check if not logged in
+        if(Auth::id() === null){
+            return redirect('');
+        }
+
         $user = auth()->user();
         $verified = $user->hasVerifiedEmail();
         $verified_text = "Not verified";

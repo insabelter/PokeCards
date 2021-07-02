@@ -103,7 +103,8 @@
             </main>
             <footer class="footer">
                 <a href="{{ route('about') }}" style="margin-right: 30px;">{{ __('About') }}</a>
-                <a href="{{ route('privacy') }}">{{ __('Privacy') }}</a>
+                <a href="{{ route('privacy') }}" style="margin-right: 30px;">{{ __('Privacy') }}</a>
+                <a href="{{ route('contact') }}">{{ __('Contact') }}</a>
                 <span class="d-none d-sm-inline" style="position: fixed; right: 15px;">By Insa Belter, Neelis Rüter and Noah Wagner</span>
             </footer>
         </div>
