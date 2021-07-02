@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offers;
+use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
@@ -71,6 +73,7 @@ class ProfileController extends Controller
         if(Hash::check($request->confirmdelete, $user->password)){
             //Delete Offers which are connected to the user
             Offers::query()->where('userId',$user->id)->delete();
+            Watchlist::query()->where('userId',$user->id)->delete();
 
             $user->delete();
 
@@ -82,6 +85,6 @@ class ProfileController extends Controller
 
     public function sendVarificationMail(){
         auth()->user()->sendEmailVerificationNotification();
-        return redirect('/profile');
+        return Redirect::back();
     }
 }

@@ -12,7 +12,7 @@
                     <x-offer-card :offer="$offer">
                         <p class="card-text">Offered By: <span class="font-weight-bold">{{$offer->user}}</span></p>
 
-                        @if($offer->userId != Auth::id())
+                        @if(Auth::id() !== null && $offer->userId != Auth::id())
                         <div class="container">
                             <div class="row">
 
@@ -34,7 +34,26 @@
                                     @endif
                                 </form>
 
-                                <button class="btn btn-sm btn-primary" style="margin-left: 5px;">Contact</button>
+                                <button type="button" data-toggle="modal" data-target="#contactModal{{$offer->id}}" class="btn btn-sm btn-primary" style="margin-left: 5px;">Contact</button>
+                                {{-- Modal for Contact Message --}}
+                                <div class="modal fade" id="contactModal{{$offer->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <form method="post" action="/marketplace/contact">
+                                                    @csrf
+                                                    <input hidden name="offerId" value="{{$offer->id}}">
+                                                    <h3>Message to {{$offer->user}}</h3>
+                                                    The user will receive your message via e-mail <br>and hopefully respond quickly.<br>
+                                                    <div class="form-group" style="margin-top: 10px;">
+                                                        <textarea type="text" class="form-control" id="messageID" name="message" placeholder="Message" style="resize: none; height: 150px;"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-sm btn-primary" style="margin-left: 5px;">Send</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

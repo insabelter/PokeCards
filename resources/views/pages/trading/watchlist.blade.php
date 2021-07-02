@@ -22,8 +22,29 @@
                                             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"></path>
                                         </svg>
                                     </button>
-                                    <button class="btn btn-sm btn-primary" style="margin-left: 5px;">Contact</button>
                                 </form>
+
+                                <button type="button" data-toggle="modal" data-target="#contactModal{{$offer->id}}" class="btn btn-sm btn-primary" style="margin-left: 5px;">Contact</button>
+                                {{-- Modal for Contact Message --}}
+                                <div class="modal fade" id="contactModal{{$offer->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <form method="post" action="/marketplace/contact">
+                                                    @csrf
+                                                    <input hidden name="offerId" value="{{$offer->id}}">
+                                                    <h3>Message to {{$offer->user}}</h3>
+                                                    The user will receive your message via e-mail <br>and hopefully respond quickly.<br>
+                                                    <div class="form-group" style="margin-top: 10px;">
+                                                        <textarea type="text" class="form-control" id="messageID" name="message" placeholder="Message" style="resize: none; height: 150px;"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-sm btn-primary" style="margin-left: 5px;">Send</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 

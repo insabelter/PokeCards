@@ -19,7 +19,7 @@
 
     <h1>Profile</h1>
 
-    <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()">Edit Information</button>
+    <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()" style="margin-bottom: 15px;">Edit Information</button>
     <form action="{{route('edit')}}"  method="post">
         @csrf
         <div class="form-group">
@@ -29,7 +29,7 @@
         <fieldset id="editableFieldset" disabled>
             <div class="form-group">
                 <label for="passwordID">Password:</label>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePassword">Change my password</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePassword" style="margin-left:5px;">Change my password</button>
             </div>
             @if (session('errorChange'))
                 <div class="alert alert-danger">
