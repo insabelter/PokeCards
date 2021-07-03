@@ -87,4 +87,14 @@ class ProfileController extends Controller
         auth()->user()->sendEmailVerificationNotification();
         return Redirect::back();
     }
+
+    public function easterEgg() {
+        $user = auth()->user();
+
+        $user->update([
+            'easteregg' => 1,
+        ]);
+
+        return redirect()->back();
+    }
 }

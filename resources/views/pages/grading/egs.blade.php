@@ -23,18 +23,29 @@
 
     <button class="btn btn-primary" onclick="calculate()">Calculate</button>
 
-    <div style="margin: 15px 0;">
-        <label for="cost">Grading your cards at EGS will cost you: (plus shipping)</label>
-        <input type="text" class="form-control" id="cost" name="cost" readonly>
+    <hr>
+
+    <div class="container" style="margin-top: 15px;">
+        <div class="card">
+            <div class="card-header">
+                Grading your cards at EGS will cost you approximately:
+            </div>
+            <div class="card-body">
+                <p class="float-left">total cost:</p>
+                <p class="float-right"><span id="totalcost"></span></p>
+            </div>
+        </div>
     </div>
 
     <p>
-        *These numbers are not exact. There can be updates from EGS, higher or lower evaluations of the price or different shipping costs.
+        *shipping costs and in some cases duty have to be added. These costs are very individual and have to be evaluated by yourself.<br><br>
+
+        **These numbers are not exact. There can be updates from EGS and higher or lower evaluations of the price.
         In addition some services might not be available because of high demand.
         This calculator should just give you a rough idea on the cost of grading your cards.<br><br>
 
         For more information about EGS and there services visit <a href="https://www.eu-grading.de/services-geb%C3%BChren-1/geb%C3%BChren-preislisten-1/">EGS</a>
-        or download the price list.
+        or download the <a href="downloads/EGS_peice_list_Jan_2021.pdf">price list</a>.
     </p>
 
     <script type="text/javascript">
@@ -42,10 +53,15 @@
             const number = document.getElementById("cardnumber");
             const certificate = document.getElementById("certificate");
             const express = document.getElementById("express");
-            const cost = document.getElementById("cost");
+            const totalcost = document.getElementById("totalcost");
 
             let price;
 
+            if(certificate.value > number.value){
+                certificate.value = number.value;
+            }
+
+            //automatic change -> you can not certificate more cards than you want to be graded
             price = number.value * 20.90 + certificate.value * 3;
 
             if(express.checked === true){
@@ -54,20 +70,22 @@
 
             //Rabatt für bestimmte Kartenanzahl
             if(number.value >= 100){
-                cost.value = Math.round(price * 0.85) + " €";
+                totalcost.innerHTML = Math.round(price * 0.85) + " €";
             }
             else if(number.value >= 65){
-                cost.value = Math.round(price * 0.86) + " €";
+                totalcost.innerHTML = Math.round(price * 0.86) + " €";
             }
             else if(number.value >= 30){
-                cost.value = Math.round(price * 0.87) + " €";
+                totalcost.innerHTML = Math.round(price * 0.87) + " €";
             }
             else if(number.value >= 10){
-                cost.value = Math.round(price * 0.9) + " €";
+                totalcost.innerHTML = Math.round(price * 0.9) + " €";
             }
             else {
-                cost.value = Math.round(price) + " €";
+                totalcost.innerHTML = Math.round(price) + " €";
             }
+
+
         }
     </script>
 

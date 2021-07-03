@@ -6,7 +6,7 @@
     <h1>Welcome to PokéCards!</h1>
 
     <p class="aligncenter">
-        <img src="{{asset('images/pokemon/pikachu_big.png')}}" alt="pikachu" class="aligncenter"/>
+        <img src="{{asset('images/icons/pikachu.png')}}" alt="pikachu" class="aligncenter"/>
     </p>
 
     <h2>This is the place to go when you’re all about pokémon and especially pokémon cards.</h2>

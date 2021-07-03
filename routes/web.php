@@ -70,6 +70,7 @@ Route::get('verficationMail', [ProfileController::class,'sendVarificationMail'])
 Route::post('profile/edit', [ProfileController::class,'edit'])->name('edit');
 Route::post('/profile/delete', [ProfileController::class,'deleteAccount'])->name('deleteAccount');
 Route::post('/changePassword', [ProfileController::class,'changePassword'])->name('changePassword');
+Route::post('/profile/easteregg', [ProfileController::class,'easterEgg'])->name('easterEgg');
 
 //Admin
 Route::get('admin', [AdminController::class,'index']) -> name("admin");

@@ -32,13 +32,24 @@
 
     <button type="submit" class="btn btn-primary" onclick="calculate()">Calculate</button>
 
-    <div style="margin: 15px 0;">
-        <label for="cost">Grading your cards at EGS will cost you: (plus shipping)</label>
-        <input type="text" class="form-control" id="cost" name="cost" readonly>
+    <hr>
+
+    <div class="container" style="margin-top: 15px;">
+        <div class="card">
+            <div class="card-header">
+                Grading your cards at PSA will cost you approximately:
+            </div>
+            <div class="card-body">
+                <p class="float-left">total cost:</p>
+                <p class="float-right"><span id="totalcost"></span></p>
+            </div>
+        </div>
     </div>
 
     <p>
-        *These numbers are not exact. There can be updates from PSA, higher or lower evaluations of the price or different shipping costs.
+        *shipping costs and in some cases duty have to be added. These costs are very individual and have to be evaluated by yourself.<br><br>
+
+        **These numbers are not exact. There can be updates from PSA and higher or lower evaluations of the price.
         In addition some services might not be available because of high demand.
         This calculator should just give you a rough idea on the cost of grading your cards.<br><br>
 
@@ -52,14 +63,13 @@
             const express = document.getElementById("expresscard");
             const superexpress = document.getElementById("superexpresscard");
             const walkthrough = document.getElementById("walkthroughcard");
-
-            const cost = document.getElementById("cost");
+            const totalcost = document.getElementById("totalcost");
 
             let price;
 
             price = Math.round(economy.value * 50 + regular.value * 100 + express.value * 150 + superexpress.value * 300 + walkthrough.value * 600);
 
-            cost.value = price + ' $';
+            totalcost.innerHTML = price + " $";
 
         }
     </script>

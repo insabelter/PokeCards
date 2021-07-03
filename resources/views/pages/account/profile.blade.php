@@ -5,9 +5,10 @@
 @inject('profile', 'App\Http\Controllers\ProfileController')
 @section('content')
 
-    <button class="btn btn-icon">
-        <img src="{{asset('images/pokemon/pikachu_big.png')}}" alt="pikachu"/>
-    </button>
+    <form method="post" action="/profile/easteregg">
+        @csrf
+        <button type="submit" class="btn btn-icon"><img src="{{asset('images/icons/pikachu.png')}}" alt="pikachu"/></button>
+    </form>
 
     <h1>Profile</h1>
 
@@ -75,6 +76,11 @@
             <img src="{{asset('images/icons/pokeball.png')}}" alt="pokeball">
             Pokeball: You're a member of the PokéCards Community as you have an account.<br>
             To get the Superball and become trustworthy please verify your E-Mail address.
+        @endif
+        @if($user->easteregg === 1)
+            <br>
+            <img src="{{asset('images/icons/safariball.png')}}" alt="ultraball">
+            Safariball: You are a true discoverer and found the easter egg.
         @endif
     </div>
 
