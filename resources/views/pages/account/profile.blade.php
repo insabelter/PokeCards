@@ -5,17 +5,9 @@
 @inject('profile', 'App\Http\Controllers\ProfileController')
 @section('content')
 
-    <li class="btn btn-icon">
-        @if($user->icon == null)
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{{asset('images/pokemon/default.png')}}" alt="verified badge"/>
-        </a>
-        @endif
-        <div class="dropdown-menu dropdown-menu-right" style="margin: 0.5rem 0 0;" aria-labelledby="navbarDropdownMenuLink">
-            {{--@foreach($icons as $icon)--}}
-            <a class="dropdown-item">Bullbasaur <img src="https://img.icons8.com/color/24/000000/bullbasaur.png" alt="pokemon icon"/></a>
-        </div>
-    </li>
+    <button class="btn btn-icon">
+        <img src="{{asset('images/pokemon/pikachu_big.png')}}" alt="pikachu"/>
+    </button>
 
     <h1>Profile</h1>
 
