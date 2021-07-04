@@ -112,15 +112,17 @@ class TradingController extends Controller
         if(Auth::id() === null){
             return redirect('');
         }
-
-        $offer = new Offers();
-        $offer->cardId = $request->cardid;
-        $offer->description = $request->description;
-        $offer->userId = Auth::id();
-        $offer->grade = $request->grade;
-        $offer->preis = $request->price;
-        $offer->verhandelbar = isset($request->negotiable);
-        $offer->save();
+        
+        if($request->price >= 0){
+            $offer = new Offers();
+            $offer->cardId = $request->cardid;
+            $offer->description = $request->description;
+            $offer->userId = Auth::id();
+            $offer->grade = $request->grade;
+            $offer->preis = $request->price;
+            $offer->verhandelbar = isset($request->negotiable);
+            $offer->save();
+        }
 
         return redirect('offers/x') -> with("msg","New Offer created!");
     }
