@@ -30,11 +30,12 @@
         </thead>
 
         <tbody>
+        {{--show all accounts that match the name entered in the input--}}
          @if(isset($_GET['username']))
             @foreach($users as $user)
                 @if(str_contains(strtolower($user->name),strtolower($_GET['username'])) && $_GET['username']!="" && $_GET['username']!=" ")
                     <tr>
-                        <td>{{ $user->name }} <br>
+                        <td>{{ $user->name }} <br>aktuell
                         </td>
                         <td>{{ $user->email }}
                         </td>
@@ -61,6 +62,7 @@
                             </td>
                         @endif
                         <td class="d-none d-sm-table-cell">
+                            {{--Delete the user in the current row--}}
                             <form method="post" action="/admin/delete">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$user->id}}">
@@ -117,9 +119,8 @@
                              </form>
                          </td>
                      @endif
-
-                     {{-- delete the user in the row --}}
                      <td class="d-none d-sm-table-cell">
+                         {{--Delete the user in the current row--}}
                          <form method="post" action="/admin/delete">
                              @csrf
                              <input type="hidden" name="id" value="{{$user->id}}">

@@ -5,6 +5,7 @@
 @inject('profile', 'App\Http\Controllers\ProfileController')
 @section('content')
 
+    {{--easteregg button that gives the safariball as a status--}}
     <form method="post" action="/profile/easteregg">
         @csrf
         <button type="submit" class="btn btn-icon"><img src="{{asset('images/icons/pikachu.png')}}" alt="pikachu"/></button>
@@ -12,6 +13,7 @@
 
     <h1>Profile</h1>
 
+    {{--enable the user to change his email or password--}}
     <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()" style="margin-bottom: 15px;">Edit Information</button>
     <form action="{{route('edit')}}"  method="post">
         @csrf
@@ -47,6 +49,7 @@
         </fieldset>
     </form>
 
+    {{--show if the account of the user is verified or display a button for verification--}}
     <div style="margin: 15px 0;">
         @if(!$verified)
             <form action="{{route('verficationMail')}}" method="get" style="margin: 15px 0;">
@@ -62,6 +65,7 @@
         @endif
     </div>
 
+    {{--Display the status of the user--}}
     <div style="margin: 15px 0;">
         <label for="status">Status:</label>
         @if($user->is_admin)
@@ -213,6 +217,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 
