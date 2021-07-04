@@ -13,6 +13,12 @@
 
     <h1>Profile</h1>
 
+    @if (session('successEasteregg'))
+        <div class="alert alert-success">
+            {{ session('successEasteregg') }}
+        </div>
+    @endif
+
     {{--enable the user to change his email or password--}}
     <button type="button" id="startEditing" class="btn btn-primary" onclick="startEditing()" style="margin-bottom: 15px;">Edit Information</button>
     <form action="{{route('edit')}}"  method="post">
@@ -139,7 +145,7 @@
                                 <input id="password" type="password" class="form-control" name="confirmdelete" placeholder="type in password to confirm deletion of your account.">
                             </div>
                             <div class="col-md-2">
-                                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"/></button>
+                                <button id="show-button" type="button" class="btn btn-primary" data-toggle="tooltip" title="show/hide password" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"/></button>
                             </div>
                             <br/>
                             <br/>
