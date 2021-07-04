@@ -15,7 +15,24 @@ use Illuminate\Support\Facades\Redirect;
 
 class TradingController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Trading Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for any aspect of trading the cards.
+    | That implies the marketplace, offers, watchlist and contacting other users.
+    |
+    */
 
+    /**
+     * Insa
+     * All offers are dispalyes with the newest ones at first.
+     *
+     * @param $cardName
+     * @param $cardSet
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function marketplace($cardName,$cardSet){
         $cardName = $cardName === 'x' ? '' : $cardName;
         $cardSet = $cardSet === 'x' ? '' : $cardSet;
@@ -27,6 +44,13 @@ class TradingController extends Controller
         return view('pages.trading.marketplace', compact('offerArray','cardName','cardSet'));
     }
 
+    /**
+     * Insa
+     * The user can see all offers that are added to his watchlist.
+     *
+     * @param Request $request
+     * @return Redirector
+     */
     public function watchlist(Request $request){
         // Check if not logged in
         if(Auth::id() === null){
@@ -45,6 +69,13 @@ class TradingController extends Controller
         return view('pages.trading.watchlist', compact('offerArray'));
     }
 
+    /**
+     * Insa
+     * The user can see all his offers.
+     *
+     * @param $cardId
+     * @return Redirector
+     */
     public function offers($cardId){
         // Check if not logged in
         if(Auth::id() === null){
@@ -68,6 +99,13 @@ class TradingController extends Controller
         return view('pages.trading.offers', compact('offerArray','cardId','cardImage'));
     }
 
+    /**
+     * Insa
+     * The user can create a new offer.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function newOffer(Request $request) {
         // Check if not logged in
         if(Auth::id() === null){
@@ -86,6 +124,13 @@ class TradingController extends Controller
         return redirect('offers/x') -> with("msg","New Offer created!");
     }
 
+    /**
+     * Insa
+     * The user can delete an offer.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function deleteOffer(Request $request){
         // Check if not logged in
         if(Auth::id() === null){
@@ -97,6 +142,13 @@ class TradingController extends Controller
         return redirect() -> route('offers','x');
     }
 
+    /**
+     * Insa
+     * The user can add an offer to his watchlist or remove it.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addToWatchlist(Request $request){
 
         $offer = Offers::query()->where('offerId',$request->offerId)->get()->first();
@@ -124,6 +176,13 @@ class TradingController extends Controller
 
     }
 
+    /**
+     * Insa
+     * The user can contact the seller from an offer via email.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function contactUser(Request $request){
 
         $offerId = $request->offerId;
@@ -144,6 +203,12 @@ class TradingController extends Controller
         return Redirect::back();
     }
 
+    /**
+     * Insa
+     *
+     * @param $offers
+     * @return array
+     */
     private function toDisplayOffer($offers){
         $offerArray = [];
         foreach($offers as $offer){

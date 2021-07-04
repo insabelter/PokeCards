@@ -28,9 +28,7 @@ Route::get('/', function () {
 // Footer -----------------------------------
 Route::get('about', [FooterController::class,'about']) -> name("about");
 Route::get('privacy', [FooterController::class,'privacy']) -> name("privacy");
-Route::get('contact', function () {
-    return view('footer.contact');
-})->name('contact');
+Route::get('contact', [FooterController::class,'contact']) ->name('contact');
 
 // Trading -----------------------------------
 Route::get('marketplace/{cardName}/{cardSet}', [TradingController::class,'marketplace']) -> name("marketplace");

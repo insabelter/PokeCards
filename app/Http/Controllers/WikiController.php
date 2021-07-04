@@ -7,6 +7,21 @@ use App\Models\Sets;
 
 class WikiController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Wiki Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for showing all cards.
+    | This can be done in the card search for specific cards or in the set explorer.
+    |
+    */
+
+    /**
+     * Show the card search and provide all card data.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function card_search(){
         $sets = Sets::all();
 
@@ -15,6 +30,13 @@ class WikiController extends Controller
         return view('pages.wiki.card-search', compact('cards','sets'));
     }
 
+    /**
+     * Insa
+     * Show the set explorer and subdivide in it the categories pokemon, trainer, energy cards.
+     *
+     * @param $setId
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function set_explorer($setId){
         $sets = Sets::all();
 
@@ -55,11 +77,23 @@ class WikiController extends Controller
         return view('pages.wiki.set-explorer', compact('setsPerSeries','currentSetCards', 'currentSet', 'sets'));
     }
 
-
-
+    /**
+     * Insa
+     *
+     * @param $setId
+     * @return mixed
+     */
     public function getSetName($setId){
         return Sets::find($setId)->name;
     }
+
+    /**
+     * Insa
+     *
+     * @param $cards
+     * @param $filterstring
+     * @return int[]|string[]
+     */
     public function filter($cards,$filterstring){
         return array_keys($cards,$filterstring);
     }

@@ -13,11 +13,10 @@ class ContactUser extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Create a new email instance.
      *
      * @return void
      */
-
     public $offer_card;
     public $username;
     public $usermail;
@@ -32,7 +31,7 @@ class ContactUser extends Mailable
     }
 
     /**
-     * Build the message.
+     * Build the email.
      *
      * @return $this
      */
