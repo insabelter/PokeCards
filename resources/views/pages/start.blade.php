@@ -11,13 +11,13 @@
     @endif
 
 
-    <p class="aligncenter">
+    <p style="text-align: center;">
         <img src="{{asset('images/icons/pikachu.png')}}" alt="pikachu" class="aligncenter"/>
     </p>
 
     <h2>This is the place to go when you’re all about pokémon and especially pokémon cards.</h2>
 
-    <p class="aligncenter">
+    <p style="text-align: center;">
         <img src="{{asset('images/icons/pokeball.png')}}" alt="pokeball" class="aligncenter"/>
         <img src="{{asset('images/icons/superball.png')}}" alt="pokeball" class="aligncenter"/>
         <img src="{{asset('images/icons/ultraball.png')}}" alt="pokeball" class="aligncenter"/>
