@@ -4,6 +4,12 @@
 
 @section('content')
     <h1 class="text-center">Welcome to PokéCards!</h1>
+    @if (session('successDelete'))
+        <div class="alert alert-success">
+            {{ session('successDelete') }}
+        </div>
+    @endif
+
 
     <p class="aligncenter">
         <img src="{{asset('images/icons/pikachu.png')}}" alt="pikachu" class="aligncenter"/>

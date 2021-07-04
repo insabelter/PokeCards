@@ -20,7 +20,6 @@
                                 <li>Dou you want to edit your <a href="{{route('profile')}}">profile</a>?</li><br>
 
                                 <li>Dou you know our <a href="{{route('guide')}}">grading guide</a>?</li><br>
-
                             </ul>
                         </div>
                 </div>

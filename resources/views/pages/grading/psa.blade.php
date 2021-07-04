@@ -57,6 +57,9 @@
     </p>
 
     <script type="text/javascript">
+        /**
+         * function that calculates the cost for grading cards at psa
+         */
         function calculate(){
             const economy = document.getElementById("economycard");
             const regular = document.getElementById("regularcard");
@@ -70,7 +73,6 @@
             price = Math.round(economy.value * 50 + regular.value * 100 + express.value * 150 + superexpress.value * 300 + walkthrough.value * 600);
 
             totalcost.innerHTML = price + " $";
-
         }
     </script>
 

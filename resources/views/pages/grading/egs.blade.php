@@ -49,6 +49,9 @@
     </p>
 
     <script type="text/javascript">
+        /**
+         * function that calculates the cost for grading cards at egs
+         */
         function calculate(){
             const number = document.getElementById("cardnumber");
             const certificate = document.getElementById("certificate");
@@ -57,18 +60,18 @@
 
             let price;
 
+            //automatic change -> you can not certificate more cards than you want to be graded
             if(certificate.value > number.value){
                 certificate.value = number.value;
             }
 
-            //automatic change -> you can not certificate more cards than you want to be graded
             price = number.value * 20.90 + certificate.value * 3;
 
             if(express.checked === true){
                 price = number.value * 20.90 + price;
             }
 
-            //Rabatt für bestimmte Kartenanzahl
+            //discount for different amout of cards
             if(number.value >= 100){
                 totalcost.innerHTML = Math.round(price * 0.85) + " €";
             }
@@ -84,8 +87,6 @@
             else {
                 totalcost.innerHTML = Math.round(price) + " €";
             }
-
-
         }
     </script>
 

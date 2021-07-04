@@ -62,7 +62,11 @@
     </form>
 </x-login-window>
 
+
 <script>
+    /**
+     * function to make the password input visible or invisible
+     */
     function showPassword(){
         const x = document.getElementById("show-button");
         const y = document.getElementById("password");
