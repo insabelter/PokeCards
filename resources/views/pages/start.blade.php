@@ -3,7 +3,7 @@
 @section('title', '')
 
 @section('content')
-    <h1>Welcome to PokéCards!</h1>
+    <h1 class="text-center">Welcome to PokéCards!</h1>
 
     <p class="aligncenter">
         <img src="{{asset('images/icons/pikachu.png')}}" alt="pikachu" class="aligncenter"/>
