@@ -10,6 +10,16 @@ use App\Notifications\ContactFormNotification;
 
 class HomeController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Home Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for editing users. Admins are able
+    | to delete users and edit their admin status.
+    |
+    */
+
     /**
      * Create a new controller instance.
      *
@@ -21,7 +31,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the home page
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -31,6 +41,13 @@ class HomeController extends Controller
         return view('home', compact('user'));
     }
 
+    /**
+     * Send an email to pokecards.site@gmail.com with the information from the contact form
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function send_mail(Request $request)
     {
         $this->validate($request, [

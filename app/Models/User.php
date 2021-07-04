@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'email_verified_at',
         'easteregg',
     ];
 
@@ -48,11 +49,20 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'custom_datetime'
     ];
 
+    /**
+     * Send an email to the user so that he can verify his email.
+     *
+     */
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmailNotification());
     }
 
+    /**
+     * Send an email to the user so that he can reset his password.
+     *
+     * @param string $token
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
