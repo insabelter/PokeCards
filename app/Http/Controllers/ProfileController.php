@@ -87,7 +87,6 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->back()->with("successChange","Password changed successfully!");
-
     }
 
     /**
@@ -135,10 +134,14 @@ class ProfileController extends Controller
     public function easterEgg() {
         $user = auth()->user();
 
-        $user->update([
-            'easteregg' => 1,
-        ]);
+        if ($user->easteregg != 1){
 
-        return redirect()->back();
+            $user->update([
+                'easteregg' => 1,
+            ]);
+
+            return redirect()->back()->with("successEasteregg","Congratulations! You discovered the easter egg! Have fun with your safari ball");
+        }
+        return redirect()->back()->with("successEasteregg","You already found the easter egg");
     }
 }

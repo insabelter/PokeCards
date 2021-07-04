@@ -30,7 +30,7 @@
                 @enderror
             </div>
             <div class="col-md-2">
-                <button id="show-button" type="button" class="btn btn-primary" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"></button>
+                <button id="show-button" type="button" class="btn btn-primary" data-toggle="tooltip" title="show/hide password" onclick="showPassword()"><img src="{{asset('images/icons/eye-unchecked.png')}}" alt="show password"></button>
             </div>
         </div>
 
