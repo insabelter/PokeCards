@@ -4,10 +4,11 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ContactUser extends Notification
+class ContactUser extends Mailable
 {
     use Queueable;
 
@@ -16,46 +17,30 @@ class ContactUser extends Notification
      *
      * @return void
      */
-    public function __construct()
+
+    public $offer_card;
+    public $username;
+    public $usermail;
+    public $message;
+
+    public function __construct($data)
     {
-        //
+        $this->offer_card = $data->offer_card;
+        $this->username = $data->username;
+        $this->usermail = $data->usermail;
+        $this->message = $data->message;
     }
 
     /**
-     * Get the notification's delivery channels.
+     * Build the message.
      *
-     * @param  mixed  $notifiable
-     * @return array
+     * @return $this
      */
-    public function via($notifiable)
+    public function build()
     {
-        return ['mail'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+        $user = auth()->user();
+        return $this->from('pokecards.site@gmail.com', 'PokéCards')
+            ->replyTo($user->email, $user->name)
+            ->markdown('emails.contact-user');
     }
 }

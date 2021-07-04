@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ContactUser;
+use App\Notifications\ContactUser;
 use App\Models\Cards;
 use App\Models\Offers;
 use App\Models\Sets;
 use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
