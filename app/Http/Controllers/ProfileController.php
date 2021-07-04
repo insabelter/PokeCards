@@ -111,7 +111,7 @@ class ProfileController extends Controller
 
             $user->delete();
 
-            return redirect('/');
+            return redirect('/')->with("successDelete","Your account has been deleted. You can use our site as guest or create a new account.");;
         }
 
         return redirect()->back()->with("errorDelete","Password wrong, your account couldn't be deleted.");
