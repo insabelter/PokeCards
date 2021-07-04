@@ -35,7 +35,7 @@
             @foreach($users as $user)
                 @if(str_contains(strtolower($user->name),strtolower($_GET['username'])) && $_GET['username']!="" && $_GET['username']!=" ")
                     <tr>
-                        <td>{{ $user->name }} <br>aktuell
+                        <td>{{ $user->name }}
                         </td>
                         <td>{{ $user->email }}
                         </td>
